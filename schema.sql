@@ -151,10 +151,10 @@ create or replace type Customer as object (
 /
 create or replace type CustomerAccount as object (
     accNum int,
-    accType varchar2(7),
+    accType varchar2(8),
     balance int,
     bID int,
-    inRate int,
+    inRate number,
     limitOfFreeOD int,
     openDate date
 ) not final
@@ -183,3 +183,21 @@ create or replace trigger CheckCustomerTitle
         end;
         /
 create table AccountTable of CustomerAccount;
+/
+create or replace trigger CheckCustomerAccount
+    before insert or update
+        of accounts
+        on CustomerTable
+        for each row
+        declare acntCount int;
+        begin
+            for i in :new.accounts.first .. :new.accounts.last loop
+                select count(*) into acntCount
+                from AccountTable acnt
+                where acnt.accNum=deref(:new.accounts(i)).accNum;
+                
+                if acntCount=0 then
+                    raise_application_error(-20000, concat('This customer`s account at index ', concat(TO_CHAR(i), ' doesn`t exist')));
+                end if;
+            end loop;
+        end;

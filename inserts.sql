@@ -52,6 +52,27 @@ insert into EmployeeTable values(
     (select ref(emp) from EmployeeTable emp where emp.empID=1), 'cashier', 10000, (select ref(br) from BranchTable br where br.bID=1), CURRENT_DATE
 );
 
+insert into AccountTable values(
+    1,
+    'checking',
+    2000,
+    1,
+    0.05,
+    500,
+    CURRENT_DATE,
+    NULL
+);
+insert into AccountTable values(
+    2,
+    'savings',
+    2000,
+    1,
+    0.05,
+    500,
+    CURRENT_DATE,
+    NULL
+);
+
 insert into CustomerTable values(
     1,
     Person(
@@ -65,7 +86,10 @@ insert into CustomerTable values(
             '03846294756'),
         'NHD8E'
     ),
-    NULL
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=1),
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=2)
+    )
 );
 
-select deref(emp.supervisorID) from EmployeeTable emp;
+/* select deref(emp.supervisorID) from EmployeeTable emp; */
