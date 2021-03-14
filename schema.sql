@@ -153,7 +153,7 @@ create or replace type CustomerAccount as object (
     accNum int,
     accType varchar2(8),
     balance int,
-    bID int,
+    bID ref Branch,
     inRate number,
     limitOfFreeOD int,
     openDate date
@@ -184,6 +184,22 @@ create or replace trigger CheckCustomerTitle
         /
 create table AccountTable of CustomerAccount;
 /
+create or replace trigger CheckAccountBranch
+    before insert or update
+        of bID
+        on AccountTable
+        for each row
+        declare i int;
+        begin
+            select count(*) into i
+            from BranchTable br
+            where br.bID=deref(:new.bID).bID;
+            
+            if i=0 then
+                raise_application_error(-20000, 'Accounts must belong to a valid branch.');
+            end if;
+        end;
+        /
 create or replace trigger CheckCustomerAccount
     before insert or update
         of accounts
