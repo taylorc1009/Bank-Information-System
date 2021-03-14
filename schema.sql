@@ -107,7 +107,7 @@ create or replace trigger CheckEmployeeSupervisor
                 where emp.empID=deref(:new.supervisorID).empID and emp.empPosition in ('head', 'manager', 'team leader');
                 
                 if i=0 then
-                    raise_application_error(-20000, 'Employees who aren`t managers must have a valid supervisor.');
+                    raise_application_error(-20000, 'Employees who aren`t managers must have a valid supervisor - either a: head, manager, or team leader');
                 end if;
             end if;
         end;
@@ -124,7 +124,7 @@ create or replace trigger CheckEmployeeBranch
             where br.bID=deref(:new.bID).bID;
             
             if i=0 then
-                raise_application_error(-20000, 'Employees must work at a valid branch.');
+                raise_application_error(-20000, 'The branch entered for this employee doesn`t exist.');
             end if;
         end;
         /
@@ -196,7 +196,7 @@ create or replace trigger CheckAccountBranch
             where br.bID=deref(:new.bID).bID;
             
             if i=0 then
-                raise_application_error(-20000, 'Accounts must belong to a valid branch.');
+                raise_application_error(-20000, 'The branch entered for this account doesn` exist.');
             end if;
         end;
         /
