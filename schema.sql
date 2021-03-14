@@ -104,7 +104,7 @@ create or replace trigger CheckEmployeeSupervisor
             if :new.empPosition not in ('head', 'manager', 'team leader') then
                 select count(*) into i
                 from EmployeeTable emp
-                where emp.empID=deref(:new.supervisorID).empID;/* and emp.empPosition in ('head', 'manager', 'team leader');*/
+                where emp.empID=deref(:new.supervisorID).empID and emp.empPosition in ('head', 'manager', 'team leader');
                 
                 if i=0 then
                     raise_application_error(-20000, 'Employees who aren`t managers must have a valid supervisor.');
@@ -213,7 +213,7 @@ create or replace trigger CheckCustomerAccount
                 where acnt.accNum=deref(:new.accounts(i)).accNum;
                 
                 if acntCount=0 then
-                    raise_application_error(-20000, concat('This customer`s account at index ', concat(TO_CHAR(i), ' doesn`t exist')));
+                    raise_application_error(-20000, concat('This customer`s account at index ', concat(TO_CHAR(i), ' doesn`t exist.')));
                 end if;
             end loop;
         end;
