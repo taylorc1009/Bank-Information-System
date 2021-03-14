@@ -40,6 +40,8 @@ create table BranchTable of Branch;
 
 
 
+
+
 create or replace type PersonName as object (
     title varchar(4),
     firstName varchar(20),
@@ -110,6 +112,22 @@ create or replace trigger CheckEmployeeSupervisor
             end if;
         end;
         /
+create or replace trigger CheckEmployeeBranch
+    before insert or update
+        of bID
+        on EmployeeTable
+        for each row
+        declare i int;
+        begin
+            select count(*) into i
+            from BranchTable br
+            where br.bID=deref(:new.bID).bID;
+            
+            if i=0 then
+                raise_application_error(-20000, 'Employees must work at a valid branch.');
+            end if;
+        end;
+        /
 create or replace trigger CheckEmployeeTitle
     before insert or update
         of pers
@@ -121,6 +139,8 @@ create or replace trigger CheckEmployeeTitle
             end if;
         end;
         /
+
+
 
 
 
@@ -165,6 +185,17 @@ create or replace trigger CheckCustomerTitle
 
 create table AccountTable of CustomerAccount;
 
+
+
+
+
+
+insert into BranchTable values(
+    1,
+    Address(24, 'Pithead Crescent', 'Prestonpans', 'HDBF9H5'),
+    '01938564837'
+);
+
 insert into EmployeeTable values(
     1,
     Person(
@@ -178,7 +209,7 @@ insert into EmployeeTable values(
             '03846294756'),
         'NHD8E'
     ),
-    NULL, 'head', 10000, NULL, CURRENT_DATE
+    NULL, 'head', 10000, (select ref(br) from BranchTable br where br.bID=1), CURRENT_DATE
 );
 
 insert into EmployeeTable values(
@@ -194,7 +225,7 @@ insert into EmployeeTable values(
             '03846294756'),
         'NHD8E'
     ),
-    (select ref(emp) from EmployeeTable emp where emp.empID=1), 'cashier', 10000, NULL, CURRENT_DATE
+    (select ref(emp) from EmployeeTable emp where emp.empID=1), 'cashier', 10000, (select ref(br) from BranchTable br where br.bID=1), CURRENT_DATE
 );
 
 insert into EmployeeTable values(
@@ -210,7 +241,7 @@ insert into EmployeeTable values(
             '03846294756'),
         'NHD8E'
     ),
-    (select ref(emp) from EmployeeTable emp where emp.empID=1), 'cashier', 10000, NULL, CURRENT_DATE
+    (select ref(emp) from EmployeeTable emp where emp.empID=1), 'cashier', 10000, (select ref(br) from BranchTable br where br.bID=1), CURRENT_DATE
 );
 
 insert into CustomerTable values(
