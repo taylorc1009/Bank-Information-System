@@ -103,6 +103,22 @@ member function getSupervisorRef(eID int) return ref Employee is emp ref Employe
     end getSupervisorRef;
 end;
 /*/
+create or replace trigger CheckPersonIsAlreadyEmployee
+    before insert or update
+        of pers
+        on EmployeeTable
+        for each row
+        declare i int;
+        begin
+            select count(*) into i
+            from EmployeeTable emp
+            where deref(emp.pers).persID=deref(:new.pers).persID;
+            
+            if i>0 then
+                raise_application_error(-20000, 'This person is already an employee.');
+            end if;
+        end;
+        /
 create or replace trigger CheckEmployeePosition
     before insert or update
         of empPosition
@@ -211,6 +227,22 @@ create table CustomerTable of Customer (
     custID primary key
 );
 /
+create or replace trigger CheckPersonIsAlreadyCustomer
+    before insert or update
+        of pers
+        on CustomerTable
+        for each row
+        declare i int;
+        begin
+            select count(*) into i
+            from CustomerTable cust
+            where deref(cust.pers).persID=deref(:new.pers).persID;
+            
+            if i>0 then
+                raise_application_error(-20000, 'This person is already a customer.');
+            end if;
+        end;
+        /
 create table AccountTable of CustomerAccount (
     accNum primary key
 );
