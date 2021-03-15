@@ -65,7 +65,8 @@ create or replace type Person as object (
 ) final
 /
 create table PersonTable of Person (
-    persID primary key
+    persID primary key,
+    constraint niNumConst unique(niNum)
 );
 /
 create or replace trigger CheckPersonTitle
@@ -155,6 +156,24 @@ create or replace trigger CheckEmployeeBranch
             
             if i=0 then
                 raise_application_error(-20000, 'The branch entered for this employee doesn`t exist.');
+            end if;
+        end;
+        /
+create or replace trigger CheckBranchSupervisor
+    before insert or update
+        of supervisorID
+        on EmployeeTable
+        for each row
+        declare i int;
+        begin
+            if :new.supervisorID is NULL then
+                select count(*) into i
+                from EmployeeTable emp
+                where emp.supervisorID is NULL and deref(emp.bID).bID=deref(:new.bID).bID;
+                
+                if i=1 then
+                    raise_application_error(-20000, 'The branch entered for this employee already has a head employee.');
+                end if;
             end if;
         end;
         /
