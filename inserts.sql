@@ -43,7 +43,7 @@ insert into PersonTable values(
     MobilePhonesArray(
         '03946392837',
         '03846294756'),
-    'NHD8E'
+    'HGU6E'
 );
 
 insert into EmployeeTable values(
@@ -66,7 +66,7 @@ insert into PersonTable values(
     MobilePhonesArray(
         '03946392837',
         '03846294756'),
-    'NHD8E'
+    'NHBF3'
 );
 
 insert into EmployeeTable values(
@@ -110,7 +110,7 @@ insert into PersonTable values (
     MobilePhonesArray(
         '03946392837',
         '03846294756'),
-    'NHD8E'
+    'NDWA2'
 );
 
 insert into CustomerTable values(
