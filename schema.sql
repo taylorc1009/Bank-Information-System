@@ -5,6 +5,7 @@ drop table BranchTable purge;
 /* person objects */
 drop table CustomerTable purge;
 drop table EmployeeTable purge;
+drop table PersonTable purge;
 drop type Customer force;
 drop type Employee force;
 
@@ -55,6 +56,7 @@ create or replace type MobilePhonesArray as varray(10) of varchar2(11)
 create or replace type AddressArray as varray(10) of Address
 /
 create or replace type Person as object (
+    persID int,
     addr AddressArray,
     pName PersonName,
     homePhone varchar2(11),
@@ -62,9 +64,24 @@ create or replace type Person as object (
     niNum varchar2(5)
 ) final
 /
+create table PersonTable of Person (
+    persID primary key
+);
+/
+create or replace trigger CheckPersonTitle
+    before insert or update
+        of pName
+        on PersonTable
+        for each row
+        begin
+            if :new.pName.title not in ('Mr', 'Mrs', 'Miss', 'Ms', 'Mstr') then
+                raise_application_error(-20000, 'A person`s title must be either: Mr, Mrs, Miss, Ms, or Mstr.');
+            end if;
+        end;
+        /
 create or replace type Employee as object (
     empID int,
-    pers Person,
+    pers ref Person,
     supervisorID ref Employee,
     empPosition varchar2(20),
     salary int,
@@ -141,17 +158,6 @@ create or replace trigger CheckEmployeeBranch
             end if;
         end;
         /
-create or replace trigger CheckEmployeeTitle
-    before insert or update
-        of pers
-        on EmployeeTable
-        for each row
-        begin
-            if :new.pers.pName.title not in ('Mr', 'Mrs', 'Miss', 'Ms', 'Mstr') then
-                raise_application_error(-20000, 'A person`s title must be either: Mr, Mrs, Miss, Ms, or Mstr.');
-            end if;
-        end;
-        /
 
 
 
@@ -159,7 +165,7 @@ create or replace trigger CheckEmployeeTitle
 
 create or replace type Customer as object (
     custID int,
-    pers Person
+    pers ref Person
 ) not final
 /
 create or replace type CustomerAccount as object (
@@ -186,17 +192,6 @@ create table CustomerTable of Customer (
     custID primary key
 );
 /
-create or replace trigger CheckCustomerTitle
-    before insert or update
-        of pers
-        on CustomerTable
-        for each row
-        begin
-            if :new.pers.pName.title not in ('Mr', 'Mrs', 'Miss', 'Ms', 'Mstr') then
-                raise_application_error(-20000, 'A person`s title must be either: Mr, Mrs, Miss, Ms, or Mstr.');
-            end if;
-        end;
-        /
 create table AccountTable of CustomerAccount (
     accNum primary key
 );
