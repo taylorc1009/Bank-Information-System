@@ -36,7 +36,9 @@ create or replace type Branch as object (
     bPhone varchar2(11)
 ) not final
 /
-create table BranchTable of Branch;
+create table BranchTable of Branch (
+    bID primary key
+);
 
 
 
@@ -71,7 +73,9 @@ create or replace type Employee as object (
     member function getSupervisorRef(eID int) return ref Employee*/
 ) not final
 /
-create table EmployeeTable of Employee;
+create table EmployeeTable of Employee (
+    empID primary key
+);
 /
 /*create or replace type body Employee as
 member function getSupervisorRef(eID int) return ref Employee is emp ref Employee;
@@ -178,7 +182,9 @@ add attribute (accounts AccountsArray) cascade;
 alter type CustomerAccount
 add attribute (customers CustomersArray) cascade;
 
-create table CustomerTable of Customer;
+create table CustomerTable of Customer (
+    custID primary key
+);
 /
 create or replace trigger CheckCustomerTitle
     before insert or update
@@ -191,7 +197,9 @@ create or replace trigger CheckCustomerTitle
             end if;
         end;
         /
-create table AccountTable of CustomerAccount;
+create table AccountTable of CustomerAccount (
+    accNum primary key
+);
 /
 create or replace trigger CheckAccountBranch
     before insert or update
