@@ -224,7 +224,7 @@ create or replace trigger CheckAccountBranch
             where br.bID=deref(:new.bID).bID;
             
             if i=0 then
-                raise_application_error(-20000, 'The branch entered for this account doesn` exist.');
+                raise_application_error(-20000, 'The branch entered for this account doesn`t exist.');
             end if;
         end;
         /
@@ -244,4 +244,18 @@ create or replace trigger CheckCustomerAccount
                     raise_application_error(-20000, concat('This customer`s account at index ', concat(TO_CHAR(i), ' doesn`t exist.')));
                 end if;
             end loop;
+        end;
+        /
+create or replace trigger InitialiseAccount
+    before insert or update
+        of accNum
+        on AccountTable
+        for each row
+        begin
+            if :new.inRate is not NULL or :new.limitOfFreeOD is not NULL then
+                raise_application_error(-20000, 'Interest rate and free overdraft limit should be NULL - the bank`s system must initialise these itself.');
+            else
+                :new.inRate:=0.05;
+                :new.limitOfFreeOD:=500;
+            end if;
         end;

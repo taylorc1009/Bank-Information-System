@@ -57,8 +57,8 @@ insert into AccountTable values(
     'current',
     2000,
     (select ref(br) from BranchTable br where br.bID=1),
-    0.05,
-    500,
+    NULL,
+    NULL,
     CURRENT_DATE,
     NULL
 );
@@ -67,8 +67,8 @@ insert into AccountTable values(
     'savings',
     2000,
     (select ref(br) from BranchTable br where br.bID=1),
-    0.05,
-    500,
+    NULL,
+    NULL,
     CURRENT_DATE,
     NULL
 );
@@ -93,3 +93,4 @@ insert into CustomerTable values(
 );
 
 /* select deref(emp.supervisorID) from EmployeeTable emp; */
+select * from AccountTable
