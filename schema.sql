@@ -201,6 +201,17 @@ create table AccountTable of CustomerAccount (
     accNum primary key
 );
 /
+create or replace trigger CheckAccountType
+    before insert or update
+        of bID
+        on AccountTable
+        for each row
+        begin
+            if :new.accType not in ('current', 'savings') then
+                raise_application_error(-20000, 'An account`s type must be either current or savings.');
+            end if;
+        end;
+        /
 create or replace trigger CheckAccountBranch
     before insert or update
         of bID

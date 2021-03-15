@@ -54,7 +54,7 @@ insert into EmployeeTable values(
 
 insert into AccountTable values(
     1,
-    'checking',
+    'current',
     2000,
     (select ref(br) from BranchTable br where br.bID=1),
     0.05,
