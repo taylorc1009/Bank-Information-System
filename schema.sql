@@ -241,6 +241,28 @@ create or replace trigger CheckCustomerAccount
             end loop;
         end;
         /
+create or replace trigger CheckWorksAtAccountsBranch
+    before insert or update
+        of accounts
+        on CustomerTable
+        for each row
+        declare i int;
+        begin
+            if :new.accounts is not NULL then /* an customer's accounts may be initially NULL, in case their account(s) needs to be created before we can create a reference to the account(s) */
+                for j in :new.accounts.first .. :new.accounts.last loop
+                    i:=0;
+                    
+                    select count(*) into i
+                    from EmployeeTable emp
+                    where deref(emp.bID).bID=deref(deref(:new.accounts(j)).bID).bID and deref(emp.pers).persID=deref(:new.pers).persID;
+                
+                    if i>0 then
+                        raise_application_error(-20000, concat('Account at index ', concat(j, ' of this customer`s accounts is assigned to the same branch which this customer is employed at.')));
+                    end if;
+                end loop;                
+            end if;
+        end;
+        /
 create or replace trigger CheckIsEmployeeAtBranch
     before insert or update
         of customers
