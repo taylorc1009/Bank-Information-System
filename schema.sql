@@ -87,22 +87,13 @@ create or replace type Employee as object (
     empPosition varchar2(20),
     salary int,
     bID ref Branch,
-    joinDate date/*,
-    member function getSupervisorRef(eID int) return ref Employee*/
+    joinDate date
 ) not final
 /
 create table EmployeeTable of Employee (
     empID primary key
 );
 /
-/*create or replace type body Employee as
-member function getSupervisorRef(eID int) return ref Employee is emp ref Employee;
-    begin
-        select ref(s) into emp from EmployeeTable s where s.empID=eID;
-        return emp;
-    end getSupervisorRef;
-end;
-/*/
 create or replace trigger CheckPersonIsAlreadyEmployee
     before insert or update
         of pers
