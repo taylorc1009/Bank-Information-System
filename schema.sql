@@ -141,7 +141,7 @@ create or replace trigger CheckSupervisorPosition
             end if;
         end;
         /
-create or replace trigger CheckEmployeeSupervisor
+create or replace trigger CheckEmployeeHasSupervisor
     before insert or update
         of supervisorID
         on EmployeeTable
