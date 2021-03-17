@@ -1,14 +1,67 @@
+/* branches */
 insert into BranchTable values(
     1,
-    Address(24, 'Pithead Crescent', 'Prestonpans', 'HDBF9H5'),
-    '01938564837'
+    Address(24, 'Lothian Road', 'Edinburgh', 'EH54NG7'),
+    '01984610485'
 );
 
 insert into BranchTable values(
     2,
-    Address(24, 'Pithead Crescent', 'Prestonpans', 'HDBF9H5'),
+    Address(7, 'Cowcaddens Road', 'Glasgow', 'EH43NGS'),
+    '01997356720'
+);
+
+insert into BranchTable values(
+    3,
+    Address(15, 'Gallowgate', 'Glasgow', 'HDBF9H5'),
     '01938564837'
 );
+
+insert into BranchTable values(
+    4,
+    Address(33, 'Edmiston Drive', 'Glasgow', 'NSHA75D'),
+    '01931038257'
+);
+
+insert into BranchTable values(
+    5,
+    Address(80, 'Bruntsfield Place', 'Edinburgh', 'HS87B15'),
+    '01983725382'
+);
+
+insert into BranchTable values(
+    6,
+    Address(29, 'Pennywell Road', 'Edinburgh', 'H3BD86S'),
+    '01992817365'
+);
+
+insert into BranchTable values(
+    7,
+    Address(2, 'Hawkhill', 'Dundee', 'ENU9H76'),
+    '01827364150'
+);
+
+insert into BranchTable values(
+    8,
+    Address(30, 'Strathmore Avenue', 'Dundee', 'E6BSUDB'),
+    '01735120384'
+);
+
+insert into BranchTable values(
+    9,
+    Address(8, 'Balunie Drive', 'Dundee', 'HSNC7AL'),
+    '01029383136'
+);
+
+insert into BranchTable values(
+    10,
+    Address(67, 'Coupar Angus Road', 'Dundee', 'ESNC8O1'),
+    '01012837468'
+);
+
+
+
+
 
 insert into PersonTable values(
     1,
