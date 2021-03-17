@@ -153,10 +153,10 @@ insert into PersonTable values(
 insert into PersonTable values(
     3,
     AddressArray(
-        Address(44, 'West Port', 'Edinburgh', 'EH66SHN')
+        Address(16, 'George Street', 'Edinburgh', 'EH32MFH')
     ),
-    PersonName('Mstr', 'Stanley', 'Elm'),
-    '07286737382',
+    PersonName('Mstr', 'Stanley', 'Smith'),
+    '03957482947',
     MobilePhonesArray(
         '02729273729'
     ),
@@ -166,7 +166,7 @@ insert into PersonTable values(
 insert into PersonTable values (
     4,
     AddressArray(
-        Address(71, 'Brunbrae Street', 'Glasgow', 'H10N7VS')
+        Address(14, 'Torryburn Close', 'Glasgow', 'EHBOE0P')
     ),
     PersonName('Mrs', 'Staci', 'Muir'),
     '08352838462',
@@ -235,8 +235,8 @@ insert into PersonTable values(
     AddressArray(
         Address(14, 'Torryburn Close', 'Glasgow', 'EHBOE0P')
     ),
-    PersonName('Mstr', 'James', 'Reyburn'),
-    '03948737374',
+    PersonName('Mstr', 'James', 'Muir'),
+    '08352838462',
     MobilePhonesArray(
         '02484783683'
     ),
@@ -408,7 +408,7 @@ insert into PersonTable values (
 insert into PersonTable values (
     22,
     AddressArray(
-        Address(48, 'Queen`s Lane South', 'Aberdeen', 'HBSGCJG')
+        Address(42, 'Queen`s Lane South', 'Aberdeen', 'HBSGCJG')
     ),
     PersonName('Mr', 'Alex', 'Johansen'),
     '08338346643',
@@ -418,11 +418,115 @@ insert into PersonTable values (
     'JHN6S'
 );
 
+insert into PersonTable values (
+    23,
+    AddressArray(
+        Address(49, 'Forebank Road', 'Dundee', 'ENB99L7')
+    ),
+    PersonName('Mr', 'Jason', 'Easton'),
+    '08384736643',
+    MobilePhonesArray(
+        '04474128463'
+    ),
+    'JHX6S'
+);
+
+insert into PersonTable values (
+    24,
+    AddressArray(
+        Address(40, 'Rose Street', 'Aberdeen', 'ENHS7S5')
+    ),
+    PersonName('Mr', 'Aidan', 'Wright'),
+    '07146438643',
+    MobilePhonesArray(
+        '08484757493'
+    ),
+    'FAN6S'
+);
+
+insert into PersonTable values (
+    25,
+    AddressArray(
+        Address(20, 'West Port', 'Edinburgh', 'EHOP2HN')
+    ),
+    PersonName('Mrs', 'Sarah', 'Cochrane'),
+    '01735244643',
+    MobilePhonesArray(
+        '09476638463'
+    ),
+    'FKS09'
+);
+
+insert into PersonTable values (
+    26,
+    AddressArray(
+        Address(23, 'Brighton Place', 'Aberdeen', 'HE5508N')
+    ),
+    PersonName('Mstr', 'Lilly', 'Holmes'),
+    '08338374543',
+    MobilePhonesArray(
+        '08474736463'
+    ),
+    'KHN86'
+);
+
+insert into PersonTable values (
+    27,
+    AddressArray(
+        Address(37, 'Dunain Road', 'Inverness', 'AH8N64S')
+    ),
+    PersonName('Mr', 'Robert', 'Carlson'),
+    '08338399933',
+    MobilePhonesArray(
+        '08427254463'
+    ),
+    'HBSH2'
+);
+
+insert into PersonTable values (
+    28,
+    AddressArray(
+        Address(16, 'George Street', 'Edinburgh', 'EH32MFH')
+    ),
+    PersonName('Mrs', 'Jane', 'Smith'),
+    '03957482947',
+    MobilePhonesArray(
+        '08474638463'
+    ),
+    'BBAHS'
+);
+
+insert into PersonTable values (
+    29,
+    AddressArray(
+        Address(44, 'West Port', 'Edinburgh', 'EH66SHN')
+    ),
+    PersonName('Miss', 'Joanne', 'Richards'),
+    '08338346643',
+    MobilePhonesArray(
+        '08474638463'
+    ),
+    'LAIW7'
+);
+
+insert into PersonTable values (
+    30,
+    AddressArray(
+        Address(23, 'Brighton Place', 'Aberdeen', 'HE5508N')
+    ),
+    PersonName('Ms', 'Zoe', 'Holmes'),
+    '08338374543',
+    MobilePhonesArray(
+        '08474638463'
+    ),
+    'XNSG7'
+);
 
 
 
 
-/* employee table - Mstrs are 3 and 9 (so far) so don't use these as employees */
+
+/* employee table - Mstrs are 3, 9, 26 (so far) so don't use these as employees */
 insert into EmployeeTable values(
     1,
     (select ref(pers) from PersonTable pers where pers.persID=21),
@@ -546,7 +650,7 @@ insert into EmployeeTable values(
 insert into EmployeeTable values(
     13,
     (select ref(pers) from PersonTable pers where pers.persID=14),
-    (select ref(emp) from EmployeeTable emp where emp.empID=11),
+    (select ref(emp) from EmployeeTable emp where emp.empID=12),
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=3),
@@ -556,7 +660,7 @@ insert into EmployeeTable values(
 insert into EmployeeTable values(
     14,
     (select ref(pers) from PersonTable pers where pers.persID=15),
-    (select ref(emp) from EmployeeTable emp where emp.empID=11),
+    (select ref(emp) from EmployeeTable emp where emp.empID=12),
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=3),
@@ -566,7 +670,7 @@ insert into EmployeeTable values(
 insert into EmployeeTable values(
     15,
     (select ref(pers) from PersonTable pers where pers.persID=16),
-    (select ref(emp) from EmployeeTable emp where emp.empID=11),
+    (select ref(emp) from EmployeeTable emp where emp.empID=12),
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=3),
@@ -596,7 +700,7 @@ insert into EmployeeTable values(
 insert into EmployeeTable values(
     18,
     (select ref(pers) from PersonTable pers where pers.persID=19),
-    (select ref(emp) from EmployeeTable emp where emp.empID=16),
+    (select ref(emp) from EmployeeTable emp where emp.empID=17),
     'cashier',
     2700,
     (select ref(br) from BranchTable br where br.bID=4),
@@ -606,7 +710,7 @@ insert into EmployeeTable values(
 insert into EmployeeTable values(
     19,
     (select ref(pers) from PersonTable pers where pers.persID=20),
-    (select ref(emp) from EmployeeTable emp where emp.empID=16),
+    (select ref(emp) from EmployeeTable emp where emp.empID=17),
     'accountant',
     3000,
     (select ref(br) from BranchTable br where br.bID=4),
@@ -616,11 +720,81 @@ insert into EmployeeTable values(
 insert into EmployeeTable values(
     20,
     (select ref(pers) from PersonTable pers where pers.persID=22),
-    (select ref(emp) from EmployeeTable emp where emp.empID=16),
+    (select ref(emp) from EmployeeTable emp where emp.empID=17),
     'cashier',
     2700,
     (select ref(br) from BranchTable br where br.bID=4),
     '20-JUN-13'
+);
+
+insert into EmployeeTable values(
+    21,
+    (select ref(pers) from PersonTable pers where pers.persID=23),
+    NULL,
+    'head',
+    11000,
+    (select ref(br) from BranchTable br where br.bID=5),
+    '1-MAR-02'
+);
+
+insert into EmployeeTable values(
+    22,
+    (select ref(pers) from PersonTable pers where pers.persID=24),
+    (select ref(emp) from EmployeeTable emp where emp.empID=21),
+    'manager',
+    7500,
+    (select ref(br) from BranchTable br where br.bID=5),
+    '30-OCT-09'
+);
+
+insert into EmployeeTable values(
+    23,
+    (select ref(pers) from PersonTable pers where pers.persID=25),
+    (select ref(emp) from EmployeeTable emp where emp.empID=21),
+    'manager',
+    7500,
+    (select ref(br) from BranchTable br where br.bID=5),
+    '3-OCT-07'
+);
+
+insert into EmployeeTable values(
+    24,
+    (select ref(pers) from PersonTable pers where pers.persID=26),
+    (select ref(emp) from EmployeeTable emp where emp.empID=22),
+    'accountant',
+    2800,
+    (select ref(br) from BranchTable br where br.bID=5),
+    '20-OCT-10'
+);
+
+insert into EmployeeTable values(
+    25,
+    (select ref(pers) from PersonTable pers where pers.persID=27),
+    (select ref(emp) from EmployeeTable emp where emp.empID=22),
+    'accountant',
+    2800,
+    (select ref(br) from BranchTable br where br.bID=5),
+    '16-FEB-13'
+);
+
+insert into EmployeeTable values(
+    26,
+    (select ref(pers) from PersonTable pers where pers.persID=28),
+    (select ref(emp) from EmployeeTable emp where emp.empID=23),
+    'cashier',
+    2800,
+    (select ref(br) from BranchTable br where br.bID=5),
+    '20-JUN-13'
+);
+
+insert into EmployeeTable values(
+    27,
+    (select ref(pers) from PersonTable pers where pers.persID=29),
+    (select ref(emp) from EmployeeTable emp where emp.empID=23),
+    'cashier',
+    2800,
+    (select ref(br) from BranchTable br where br.bID=5),
+    '19-JUL-14'
 );
 
 
