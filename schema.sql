@@ -265,7 +265,7 @@ create or replace trigger CheckAccountBranch
             end if;
         end;
         /
-create or replace trigger CheckCustomerAccount
+create or replace trigger CheckCustomerAccounts
     before insert or update
         of accounts
         on CustomerTable
@@ -281,6 +281,26 @@ create or replace trigger CheckCustomerAccount
                     raise_application_error(-20000, concat('This customer`s account at index ', concat(TO_CHAR(i), ' doesn`t exist.')));
                 end if;
             end loop;
+        end;
+        /
+create or replace trigger CheckAccountCustomers
+    before insert or update
+        of customers
+        on AccountTable
+        for each row
+        declare custCount int;
+        begin
+            if :new.customers is not NULL then
+                for i in :new.customers.first .. :new.customers.last loop
+                    select count(*) into custCount
+                    from CustomerTable cust
+                    where cust.custID=deref(:new.customers(i)).custID;
+                    
+                    if custCount=0 then
+                        raise_application_error(-20000, concat('This account`s customer at index ', concat(TO_CHAR(i), ' doesn`t exist.')));
+                    end if;
+                end loop;
+            end if;
         end;
         /
 create or replace trigger CheckWorksAtAccountsBranch
