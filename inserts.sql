@@ -405,6 +405,19 @@ insert into PersonTable values (
     'JK1A8'
 );
 
+insert into PersonTable values (
+    22,
+    AddressArray(
+        Address(48, 'Queen`s Lane South', 'Aberdeen', 'HBSGCJG')
+    ),
+    PersonName('Mr', 'Alex', 'Johansen'),
+    '08338346643',
+    MobilePhonesArray(
+        '08474638463'
+    ),
+    'JHN6S'
+);
+
 
 
 
@@ -560,6 +573,56 @@ insert into EmployeeTable values(
     '15-DEC-14'
 );
 
+insert into EmployeeTable values(
+    16,
+    (select ref(pers) from PersonTable pers where pers.persID=17),
+    NULL,
+    'head',
+    12000,
+    (select ref(br) from BranchTable br where br.bID=4),
+    '19-SEP-00'
+);
+
+insert into EmployeeTable values(
+    17,
+    (select ref(pers) from PersonTable pers where pers.persID=18),
+    (select ref(emp) from EmployeeTable emp where emp.empID=16),
+    'manager',
+    8500,
+    (select ref(br) from BranchTable br where br.bID=4),
+    '3-OCT-07'
+);
+
+insert into EmployeeTable values(
+    18,
+    (select ref(pers) from PersonTable pers where pers.persID=19),
+    (select ref(emp) from EmployeeTable emp where emp.empID=16),
+    'cashier',
+    2700,
+    (select ref(br) from BranchTable br where br.bID=4),
+    '25-FEB-11'
+);
+
+insert into EmployeeTable values(
+    19,
+    (select ref(pers) from PersonTable pers where pers.persID=20),
+    (select ref(emp) from EmployeeTable emp where emp.empID=16),
+    'accountant',
+    3000,
+    (select ref(br) from BranchTable br where br.bID=4),
+    '17-FEB-09'
+);
+
+insert into EmployeeTable values(
+    20,
+    (select ref(pers) from PersonTable pers where pers.persID=22),
+    (select ref(emp) from EmployeeTable emp where emp.empID=16),
+    'cashier',
+    2700,
+    (select ref(br) from BranchTable br where br.bID=4),
+    '20-JUN-13'
+);
+
 
 
 
@@ -567,22 +630,221 @@ insert into EmployeeTable values(
 /* account table */
 insert into AccountTable values(
     1,
-    'current',
-    2000,
+    'savings',
+    4000,
     (select ref(br) from BranchTable br where br.bID=1),
     NULL,
     NULL,
-    CURRENT_DATE,
+    '12-MAY-09',
     NULL
 );
+
 insert into AccountTable values(
     2,
     'savings',
-    2000,
+    3500,
     (select ref(br) from BranchTable br where br.bID=2),
     NULL,
     NULL,
-    CURRENT_DATE,
+    '8-APR-13',
+    NULL
+);
+
+insert into AccountTable values(
+    3,
+    'current',
+    2200,
+    (select ref(br) from BranchTable br where br.bID=3),
+    NULL,
+    NULL,
+    '26-FEB-16',
+    NULL
+);
+
+insert into AccountTable values(
+    4,
+    'savings',
+    3100,
+    (select ref(br) from BranchTable br where br.bID=4),
+    NULL,
+    NULL,
+    '3-JAN-10',
+    NULL
+);
+
+insert into AccountTable values(
+    5,
+    'current',
+    1700,
+    (select ref(br) from BranchTable br where br.bID=5),
+    NULL,
+    NULL,
+    '21-JUL-12',
+    NULL
+);
+
+insert into AccountTable values(
+    6,
+    'current',
+    900,
+    (select ref(br) from BranchTable br where br.bID=6),
+    NULL,
+    NULL,
+    '9-MAR-10',
+    NULL
+);
+
+insert into AccountTable values(
+    7,
+    'current',
+    1000,
+    (select ref(br) from BranchTable br where br.bID=7),
+    NULL,
+    NULL,
+    '8-JUL-07',
+    NULL
+);
+
+insert into AccountTable values(
+    8,
+    'savings',
+    3800,
+    (select ref(br) from BranchTable br where br.bID=8),
+    NULL,
+    NULL,
+    '16-AUG-10',
+    NULL
+);
+
+insert into AccountTable values(
+    9,
+    'current',
+    1200,
+    (select ref(br) from BranchTable br where br.bID=9),
+    NULL,
+    NULL,
+    '10-SEP-14',
+    NULL
+);
+
+insert into AccountTable values(
+    10,
+    'savings',
+    7000,
+    (select ref(br) from BranchTable br where br.bID=10),
+    NULL,
+    NULL,
+    '1-OCT-13',
+    NULL
+);
+
+insert into AccountTable values(
+    11,
+    'savings',
+    8100,
+    (select ref(br) from BranchTable br where br.bID=11),
+    NULL,
+    NULL,
+    '19-DEC-06',
+    NULL
+);
+
+insert into AccountTable values(
+    12,
+    'current',
+    2900,
+    (select ref(br) from BranchTable br where br.bID=12),
+    NULL,
+    NULL,
+    '2-OCT-07',
+    NULL
+);
+
+insert into AccountTable values(
+    13,
+    'savings',
+    5600,
+    (select ref(br) from BranchTable br where br.bID=13),
+    NULL,
+    NULL,
+    '14-AUG-09',
+    NULL
+);
+
+insert into AccountTable values(
+    14,
+    'current',
+    1300,
+    (select ref(br) from BranchTable br where br.bID=14),
+    NULL,
+    NULL,
+    '7-MAR-10',
+    NULL
+);
+
+insert into AccountTable values(
+    15,
+    'current',
+    1600,
+    (select ref(br) from BranchTable br where br.bID=15),
+    NULL,
+    NULL,
+    '27-NOV-08',
+    NULL
+);
+
+insert into AccountTable values(
+    16,
+    'savings',
+    6800,
+    (select ref(br) from BranchTable br where br.bID=16),
+    NULL,
+    NULL,
+    '25-NOV-13',
+    NULL
+);
+
+insert into AccountTable values(
+    17,
+    'savings',
+    5000,
+    (select ref(br) from BranchTable br where br.bID=17),
+    NULL,
+    NULL,
+    '8-JUL-14',
+    NULL
+);
+
+insert into AccountTable values(
+    18,
+    'savings',
+    5700,
+    (select ref(br) from BranchTable br where br.bID=18),
+    NULL,
+    NULL,
+    '9-JAN-07',
+    NULL
+);
+
+insert into AccountTable values(
+    19,
+    'savings',
+    6400,
+    (select ref(br) from BranchTable br where br.bID=19),
+    NULL,
+    NULL,
+    '22-MAY-12',
+    NULL
+);
+
+insert into AccountTable values(
+    20,
+    'current',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=20),
+    NULL,
+    NULL,
+    '13-JUN-12',
     NULL
 );
 
