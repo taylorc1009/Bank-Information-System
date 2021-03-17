@@ -924,7 +924,7 @@ insert into PersonTable values (
 
 
 
-/* employee table - Mstrs are 3, 9, 26 (so far) so don't use these as employees */
+/* employee table - Mstrs are 3, 9, 26, 37, 49, 56 (so far) so don't use these as employees */
 insert into EmployeeTable values(
     1,
     (select ref(pers) from PersonTable pers where pers.persID=21),
@@ -1203,6 +1203,276 @@ insert into EmployeeTable values(
     12000,
     (select ref(br) from BranchTable br where br.bID=10),
     '12-JUN-15'
+);
+
+insert into EmployeeTable values(
+    29,
+    (select ref(pers) from PersonTable pers where pers.persID=31),
+    NULL,
+    'head',
+    12000,
+    (select ref(br) from BranchTable br where br.bID=11),
+    '1-MAY-99'
+);
+
+insert into EmployeeTable values(
+    30,
+    (select ref(pers) from PersonTable pers where pers.persID=32),
+    (select ref(emp) from EmployeeTable emp where emp.empID=29),
+    'accountant',
+    4000,
+    (select ref(br) from BranchTable br where br.bID=11),
+    '17-APR-02'
+);
+
+insert into EmployeeTable values(
+    31,
+    (select ref(pers) from PersonTable pers where pers.persID=33),
+    (select ref(emp) from EmployeeTable emp where emp.empID=29),
+    'cashier',
+    3000,
+    (select ref(br) from BranchTable br where br.bID=11),
+    '4-NOV-15'
+);
+
+insert into EmployeeTable values(
+    32,
+    (select ref(pers) from PersonTable pers where pers.persID=34),
+    NULL,
+    'manager',
+    10000,
+    (select ref(br) from BranchTable br where br.bID=12),
+    '14-JUN-14'
+);
+
+insert into EmployeeTable values(
+    33,
+    (select ref(pers) from PersonTable pers where pers.persID=35),
+    (select ref(emp) from EmployeeTable emp where emp.empID=32),
+    'cashier',
+    3000,
+    (select ref(br) from BranchTable br where br.bID=12),
+    '10-DEC-14'
+);
+
+insert into EmployeeTable values(
+    34,
+    (select ref(pers) from PersonTable pers where pers.persID=36),
+    NULL,
+    'manager',
+    10000,
+    (select ref(br) from BranchTable br where br.bID=13),
+    '12-MAY-07'
+);
+
+insert into EmployeeTable values(
+    35,
+    (select ref(pers) from PersonTable pers where pers.persID=60),
+    (select ref(emp) from EmployeeTable emp where emp.empID=34),
+    'cashier',
+    2700,
+    (select ref(br) from BranchTable br where br.bID=13),
+    '5-JAN-16'
+);
+
+insert into EmployeeTable values(
+    36,
+    (select ref(pers) from PersonTable pers where pers.persID=38),
+    NULL,
+    'manager',
+    11500,
+    (select ref(br) from BranchTable br where br.bID=14),
+    '8-OCT-15'
+);
+
+insert into EmployeeTable values(
+    37,
+    (select ref(pers) from PersonTable pers where pers.persID=39),
+    (select ref(emp) from EmployeeTable emp where emp.empID=36),
+    'accountant',
+    35000,
+    (select ref(br) from BranchTable br where br.bID=14),
+    '29-JUN-10'
+);
+
+insert into EmployeeTable values(
+    38,
+    (select ref(pers) from PersonTable pers where pers.persID=40),
+    NULL,
+    'head',
+    12000,
+    (select ref(br) from BranchTable br where br.bID=15),
+    '7-DEC-10'
+);
+
+insert into EmployeeTable values(
+    39,
+    (select ref(pers) from PersonTable pers where pers.persID=41),
+    (select ref(emp) from EmployeeTable emp where emp.empID=38),
+    'cashier',
+    3800,
+    (select ref(br) from BranchTable br where br.bID=15),
+    '18-JUL-14'
+);
+
+insert into EmployeeTable values(
+    40,
+    (select ref(pers) from PersonTable pers where pers.persID=42),
+    NULL,
+    'manager',
+    11000,
+    (select ref(br) from BranchTable br where br.bID=16),
+    '7-MAR-15'
+);
+
+insert into EmployeeTable values(
+    41,
+    (select ref(pers) from PersonTable pers where pers.persID=43),
+    (select ref(emp) from EmployeeTable emp where emp.empID=40),
+    'accountant',
+    3000,
+    (select ref(br) from BranchTable br where br.bID=16),
+    '15-DEC-14'
+);
+
+insert into EmployeeTable values(
+    42,
+    (select ref(pers) from PersonTable pers where pers.persID=44),
+    NULL,
+    'head',
+    12000,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '19-SEP-00'
+);
+
+insert into EmployeeTable values(
+    43,
+    (select ref(pers) from PersonTable pers where pers.persID=45),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'accountant',
+    4100,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '3-OCT-07'
+);
+
+insert into EmployeeTable values(
+    44,
+    (select ref(pers) from PersonTable pers where pers.persID=46),
+    NULL,
+    'team leader',
+    10100,
+    (select ref(br) from BranchTable br where br.bID=18),
+    '25-FEB-11'
+);
+
+insert into EmployeeTable values(
+    45,
+    (select ref(pers) from PersonTable pers where pers.persID=48),
+    (select ref(emp) from EmployeeTable emp where emp.empID=44),
+    'accountant',
+    2700,
+    (select ref(br) from BranchTable br where br.bID=18),
+    '17-FEB-09'
+);
+
+insert into EmployeeTable values(
+    46,
+    (select ref(pers) from PersonTable pers where pers.persID=49),
+    NULL,
+    'team leader',
+    11200,
+    (select ref(br) from BranchTable br where br.bID=19),
+    '20-JUN-13'
+);
+
+insert into EmployeeTable values(
+    47,
+    (select ref(pers) from PersonTable pers where pers.persID=50),
+    (select ref(emp) from EmployeeTable emp where emp.empID=46),
+    'cashier',
+    3100,
+    (select ref(br) from BranchTable br where br.bID=19),
+    '1-MAR-02'
+);
+
+insert into EmployeeTable values(
+    48,
+    (select ref(pers) from PersonTable pers where pers.persID=51),
+    NULL,
+    'manager',
+    11400,
+    (select ref(br) from BranchTable br where br.bID=20),
+    '30-OCT-09'
+);
+
+insert into EmployeeTable values(
+    49,
+    (select ref(pers) from PersonTable pers where pers.persID=52),
+    (select ref(emp) from EmployeeTable emp where emp.empID=48),
+    'accountant',
+    4000,
+    (select ref(br) from BranchTable br where br.bID=20),
+    '3-OCT-07'
+);
+
+insert into EmployeeTable values(
+    50,
+    (select ref(pers) from PersonTable pers where pers.persID=53),
+    (select ref(emp) from EmployeeTable emp where emp.empID=46),
+    'cashier',
+    3100,
+    (select ref(br) from BranchTable br where br.bID=19),
+    '20-OCT-10'
+);
+
+insert into EmployeeTable values(
+    51,
+    (select ref(pers) from PersonTable pers where pers.persID=54),
+    (select ref(emp) from EmployeeTable emp where emp.empID=44),
+    'accountant',
+    3500,
+    (select ref(br) from BranchTable br where br.bID=18),
+    '16-FEB-13'
+);
+
+insert into EmployeeTable values(
+    52,
+    (select ref(pers) from PersonTable pers where pers.persID=55),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'cashier',
+    3500,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '20-JUN-13'
+);
+
+insert into EmployeeTable values(
+    53,
+    (select ref(pers) from PersonTable pers where pers.persID=57),
+    (select ref(emp) from EmployeeTable emp where emp.empID=40),
+    'accountant',
+    2800,
+    (select ref(br) from BranchTable br where br.bID=16),
+    '19-JUL-14'
+);
+
+insert into EmployeeTable values(
+    54,
+    (select ref(pers) from PersonTable pers where pers.persID=58),
+    (select ref(emp) from EmployeeTable emp where emp.empID=38),
+    'accountant',
+    3000,
+    (select ref(br) from BranchTable br where br.bID=15),
+    '12-JUN-15'
+);
+
+insert into EmployeeTable values(
+    55,
+    (select ref(pers) from PersonTable pers where pers.persID=59),
+    (select ref(emp) from EmployeeTable emp where emp.empID=36),
+    'cashier',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=14),
+    '18-MAY-09'
 );
 
 
