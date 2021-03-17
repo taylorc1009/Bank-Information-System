@@ -374,7 +374,7 @@ create or replace trigger InitialiseAccount
             if :new.inRate is not NULL or :new.limitOfFreeOD is not NULL then
                 raise_application_error(-20000, 'Interest rate and free overdraft limit should be NULL - the bank`s system must initialise these itself.');
             else
-                :new.inRate:=0.05;
-                :new.limitOfFreeOD:=500;
+                :new.inRate:=dbms_random.value(3,8)/100;
+                :new.limitOfFreeOD:=dbms_random.value(1,10)*100;
             end if;
         end;
