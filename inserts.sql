@@ -697,7 +697,7 @@ insert into AccountTable values(
 insert into AccountTable values(
     7,
     'current',
-    1000,
+    700,
     (select ref(br) from BranchTable br where br.bID=7),
     NULL,
     NULL,
@@ -852,35 +852,69 @@ insert into AccountTable values(
 
 
 
-/* customer table */
+/* customer table - also add customers to their respective account's customer list */
 insert into CustomerTable values(
     1,
-    (select ref(pers) from PersonTable pers where pers.persID=4),
+    (select ref(pers) from PersonTable pers where pers.persID=3),
     AccountsArray(
-        (select ref(acnt) from AccountTable acnt where acnt.accNum=1)
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=6)
     )
 );
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=1)
+) where acnt.accNum=6;
 
 insert into CustomerTable values(
     2,
-    (select ref(pers) from PersonTable pers where pers.persID=2),
+    (select ref(pers) from PersonTable pers where pers.persID=9),
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=7)
+    )
+);
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=2)
+) where acnt.accNum=7;
+
+insert into CustomerTable values(
+    3,
+    (select ref(pers) from PersonTable pers where pers.persID=1),
     AccountsArray(
         (select ref(acnt) from AccountTable acnt where acnt.accNum=2)
     )
 );
-
-
-
-
-
-/* add customers to their respective account's customer list */
 update AccountTable acnt set customers=CustomersArray(
-    (select ref(cust) from CustomerTable cust where cust.custID=1)
-) where acnt.accNum=1;
-
-update AccountTable acnt set customers=CustomersArray(
-    (select ref(cust) from CustomerTable cust where cust.custID=2)
+    (select ref(cust) from CustomerTable cust where cust.custID=3)
 ) where acnt.accNum=2;
+
+insert into CustomerTable values(
+    4,
+    (select ref(pers) from PersonTable pers where pers.persID=2),
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=3),
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=6)
+    )
+);
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=4)
+) where acnt.accNum=3;
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=4)
+) where acnt.accNum=6;
+
+insert into CustomerTable values(
+    5,
+    (select ref(pers) from PersonTable pers where pers.persID=4),
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=4),
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=7)
+    )
+);
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=5)
+) where acnt.accNum=4;
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=5)
+) where acnt.accNum=7;
 
 /* select deref(emp.supervisorID) from EmployeeTable emp where emp.supervisorID is not NULL; */
 /* select * from AccountTable; */
