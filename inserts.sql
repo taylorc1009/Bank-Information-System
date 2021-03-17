@@ -59,6 +59,66 @@ insert into BranchTable values(
     '01012837468'
 );
 
+insert into BranchTable values(
+    11,
+    Address(44, 'Willowbank Road', 'Aberdeen', 'EH8H099'),
+    '01123827745'
+);
+
+insert into BranchTable values(
+    12,
+    Address(17, 'Berryden Road', 'Aberdeen', 'HH75NDN'),
+    '01102816419'
+);
+
+insert into BranchTable values(
+    13,
+    Address(31, 'Auchinyell Road', 'Aberdeen', 'EH56BDH'),
+    '01983651841'
+);
+
+insert into BranchTable values(
+    14,
+    Address(12, 'North Esplanade Way', 'Aberdeen', 'NSB23B1'),
+    '01931038257'
+);
+
+insert into BranchTable values(
+    15,
+    Address(89, 'Culduthel Road', 'Inverness', 'HHSB415'),
+    '01983709937'
+);
+
+insert into BranchTable values(
+    16,
+    Address(45, 'Old Edinburgh Road', 'Inverness', 'HXHG76S'),
+    '01077827716'
+);
+
+insert into BranchTable values(
+    17,
+    Address(22, 'Bank Street', 'Inverness', 'EHGLK76'),
+    '01719926481'
+);
+
+insert into BranchTable values(
+    18,
+    Address(39, 'Telford Street', 'Inverness', 'EHB22SO'),
+    '01152715748'
+);
+
+insert into BranchTable values(
+    19,
+    Address(52, 'Drum Brae North', 'Edinburgh', 'EH3C7YL'),
+    '01082716430'
+);
+
+insert into BranchTable values(
+    20,
+    Address(97, 'Colinton Road', 'Edinburgh', 'ESF5TQ8'),
+    '01733839428'
+);
+
 
 
 
