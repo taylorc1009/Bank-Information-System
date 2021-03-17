@@ -1728,6 +1728,50 @@ update AccountTable acnt set customers=CustomersArray(
 ) where acnt.accNum=7;
 
 insert into CustomerTable values(
+    6,
+    (select ref(pers) from PersonTable pers where pers.persID=26),
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=5)
+    )
+);
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=6)
+) where acnt.accNum=5;
+
+insert into CustomerTable values(
+    7,
+    (select ref(pers) from PersonTable pers where pers.persID=37),
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=6)
+    )
+);
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=7)
+) where acnt.accNum=6;
+
+insert into CustomerTable values(
+    8,
+    (select ref(pers) from PersonTable pers where pers.persID=49),
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=8)
+    )
+);
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=8)
+) where acnt.accNum=8;
+
+insert into CustomerTable values(
+    9,
+    (select ref(pers) from PersonTable pers where pers.persID=56),
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=9)
+    )
+);
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=9)
+) where acnt.accNum=9;
+
+insert into CustomerTable values(
     3,
     (select ref(pers) from PersonTable pers where pers.persID=1),
     AccountsArray(
