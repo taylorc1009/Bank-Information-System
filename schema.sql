@@ -132,7 +132,7 @@ create or replace trigger CheckSupervisorPosition
             end if;
         end;
         /
-create or replace trigger CheckEmployeeHasSupervisor
+create or replace trigger CheckEmployeeHasValidSupervisor
     before insert or update
         of supervisorID
         on EmployeeTable
@@ -145,7 +145,25 @@ create or replace trigger CheckEmployeeHasSupervisor
                 where emp.empID=deref(:new.supervisorID).empID and emp.empPosition in ('head', 'manager', 'team leader');
                 
                 if i=0 then
-                    raise_application_error(-20000, 'Employees who aren`t managers must have a valid supervisor - either a: head, manager, or team leader');
+                    raise_application_error(-20000, 'Employees who aren`t managers must have a valid supervisor - either a: head, manager, or team leader.');
+                end if;
+            end if;
+        end;
+        /
+create or replace trigger CheckEmployeeSupervisorBranch
+    before insert or update
+        of supervisorID
+        on EmployeeTable
+        for each row
+        declare i int;
+        begin
+            if :new.supervisorID is not NULL then
+                select count(*) into i
+                from EmployeeTable emp
+                where emp.empID=deref(:new.supervisorID).empID and deref(emp.bID).bID=deref(:new.bID).bID;
+                
+                if i=0 then
+                    raise_application_error(-20000, 'An employee`s supervisor must work at the same branch they do.');
                 end if;
             end if;
         end;
