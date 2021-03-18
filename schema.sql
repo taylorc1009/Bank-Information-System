@@ -77,6 +77,17 @@ create or replace trigger CheckPersonTitle
             end if;
         end;
         /
+create or replace trigger CheckPersonHomePhone
+    before insert or update
+        of homePhone
+        on PersonTable
+        for each row
+        begin
+            if not regexp_like(:new.homePhone, '^[[:digit:]]{8,11}') then
+                raise_application_error(-20000, 'A person`s home phone number must be 8-11 numbers long and consist of only numbers.');
+            end if;
+        end;
+        /
 create or replace trigger CheckPersonInsuranceNo
     before insert or update
         of niNum
