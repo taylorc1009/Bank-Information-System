@@ -1704,7 +1704,7 @@ insert into AccountTable values(
 
 
 
-/* customer table - also add customers to their respective account's customer list */
+/* customer table - also add customers to their respective accounts' customer list */
 insert into CustomerTable values(
     1,
     (select ref(pers) from PersonTable pers where pers.persID=3),
@@ -1715,6 +1715,8 @@ insert into CustomerTable values(
 update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=1)
 ) where acnt.accNum=6;
+
+
 
 insert into CustomerTable values(
     2,
@@ -1727,6 +1729,8 @@ update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=2)
 ) where acnt.accNum=7;
 
+
+
 insert into CustomerTable values(
     6,
     (select ref(pers) from PersonTable pers where pers.persID=26),
@@ -1737,6 +1741,8 @@ insert into CustomerTable values(
 update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=6)
 ) where acnt.accNum=5;
+
+
 
 insert into CustomerTable values(
     7,
@@ -1749,6 +1755,8 @@ update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=7)
 ) where acnt.accNum=6;
 
+
+
 insert into CustomerTable values(
     8,
     (select ref(pers) from PersonTable pers where pers.persID=49),
@@ -1759,6 +1767,8 @@ insert into CustomerTable values(
 update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=8)
 ) where acnt.accNum=8;
+
+
 
 insert into CustomerTable values(
     9,
@@ -1771,6 +1781,8 @@ update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=9)
 ) where acnt.accNum=9;
 
+
+
 insert into CustomerTable values(
     3,
     (select ref(pers) from PersonTable pers where pers.persID=1),
@@ -1781,6 +1793,8 @@ insert into CustomerTable values(
 update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=3)
 ) where acnt.accNum=2;
+
+
 
 insert into CustomerTable values(
     4,
@@ -1796,6 +1810,8 @@ update AccountTable acnt set customers=CustomersArray(
 update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=4)
 ) where acnt.accNum=6;
+
+
 
 insert into CustomerTable values(
     5,
