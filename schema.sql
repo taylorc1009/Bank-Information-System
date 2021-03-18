@@ -83,7 +83,7 @@ create or replace trigger CheckPersonInsuranceNo
         on PersonTable
         for each row
         begin
-            if length(:new.niNum) < 5 then
+            if length(:new.niNum) != 5 then
                 raise_application_error(-20000, 'A person`s National Insurance Number must be 5 characters');
             end if;
         end;
