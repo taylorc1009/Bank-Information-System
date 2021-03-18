@@ -79,12 +79,12 @@ create or replace trigger CheckPersonTitle
         /
 create or replace trigger CheckPersonInsuranceNo
     before insert or update
-        of pName
+        of niNum
         on PersonTable
         for each row
         begin
-            if length(:new.niNum) != 5 then
-                raise_application_error(-20000, 'A person`s National Insurance Number must be 5 characters');
+            if not regexp_like(:new.niNum, '(\d|\w){5}') then
+                raise_application_error(-20000, 'A person`s National Insurance Number must be 5 characters long and consist of only letters and numbers.');
             end if;
         end;
         /
