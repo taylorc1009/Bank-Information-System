@@ -39,6 +39,18 @@ create or replace type Branch as object (
 create table BranchTable of Branch (
     bID primary key
 );
+/
+create or replace trigger CheckBranchPhone
+    before insert or update
+        of bPhone
+        on BranchTable
+        for each row
+        begin
+            if not regexp_like(:new.bPhone, '^[[:digit:]]{8,11}') then
+                raise_application_error(-20000, 'A branch`s phone number must be 8-11 numbers long and consist of only numbers.');
+            end if;
+        end;
+        /
 
 
 
