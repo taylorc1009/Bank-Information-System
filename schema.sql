@@ -88,6 +88,19 @@ create or replace trigger CheckPersonHomePhone
             end if;
         end;
         /
+create or replace trigger CheckPersonMobilePhones
+    before insert or update
+        of mobilePhones
+        on PersonTable
+        for each row
+        begin
+            for i in :new.mobilePhones.first .. :new.mobilePhones.last loop
+                if not regexp_like(:new.mobilePhones(i), '^[[:digit:]]{8,11}') then
+                    raise_application_error(-20000, 'This person`s mobile phone number at index ' || i || ' wasn`t 8-11 numbers long or didn`t consist of only numbers.');
+                end if;
+            end loop;
+        end;
+        /
 create or replace trigger CheckPersonInsuranceNo
     before insert or update
         of niNum
