@@ -1970,6 +1970,3 @@ insert into CustomerTable values(
 update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=20)
 ) where acnt.accNum=20;
-
-/* select deref(emp.supervisorID) from EmployeeTable emp where emp.supervisorID is not NULL; */
-/* select * from AccountTable; */
