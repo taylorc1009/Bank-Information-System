@@ -77,6 +77,17 @@ create or replace trigger CheckPersonTitle
             end if;
         end;
         /
+create or replace trigger CheckPersonInsuranceNo
+    before insert or update
+        of pName
+        on PersonTable
+        for each row
+        begin
+            if length(:new.niNum) < 5 then
+                raise_application_error(-20000, 'A person`s National Insurance Number must be 5 characters');
+            end if;
+        end;
+        /
 create or replace type Employee as object (
     empID int,
     pers ref Person,
