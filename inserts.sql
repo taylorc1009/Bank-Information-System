@@ -126,9 +126,7 @@ insert into BranchTable values(
 /* person table */
 insert into PersonTable values(
     1,
-    AddressArray(
-        Address(4, 'Leadburn Road', 'Glasgow', 'EH30HNS')
-    ),
+    Address(4, 'Leadburn Road', 'Glasgow', 'EH30HNS'),
     PersonName('Mr', 'Steven', 'Gracey'),
     '01936287463',
     MobilePhonesArray(
@@ -139,9 +137,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     2,
-    AddressArray(
-        Address(16, 'George Street', 'Edinburgh', 'EH32MFH')
-    ),
+    Address(16, 'George Street', 'Edinburgh', 'EH32MFH'),
     PersonName('Mr', 'John', 'Smith'),
     '03957482947',
     MobilePhonesArray(
@@ -152,9 +148,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     3,
-    AddressArray(
-        Address(16, 'George Street', 'Edinburgh', 'EH32MFH')
-    ),
+    Address(16, 'George Street', 'Edinburgh', 'EH32MFH'),
     PersonName('Mstr', 'Stanley', 'Smith'),
     '03957482947',
     MobilePhonesArray(
@@ -165,9 +159,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     4,
-    AddressArray(
-        Address(14, 'Torryburn Close', 'Glasgow', 'EHBOE0P')
-    ),
+    Address(14, 'Torryburn Close', 'Glasgow', 'EHBOE0P'),
     PersonName('Mrs', 'Staci', 'Muir'),
     '08352838462',
     MobilePhonesArray(
@@ -178,9 +170,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     5,
-    AddressArray(
-        Address(10, 'Dykemuir Street', 'Glasgow', 'EHNC5A4')
-    ),
+    Address(10, 'Dykemuir Street', 'Glasgow', 'EHNC5A4'),
     PersonName('Mr', 'Arron', 'McLean'),
     '07293736462',
     MobilePhonesArray(
@@ -191,9 +181,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     6,
-    AddressArray(
-        Address(39, 'Petershill Drive', 'Glasgow', 'HNS9M43')
-    ),
+    Address(39, 'Petershill Drive', 'Glasgow', 'HNS9M43'),
     PersonName('Miss', 'Carol', 'Burns'),
     '09274826372',
     MobilePhonesArray(
@@ -204,9 +192,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     7,
-    AddressArray(
-        Address(4, 'Rye Drive', 'Glasgow', 'HD3A44S')
-    ),
+    Address(4, 'Rye Drive', 'Glasgow', 'HD3A44S'),
     PersonName('Mr', 'Walter', 'Shall'),
     '07362673827',
     MobilePhonesArray(
@@ -219,9 +205,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     8,
-    AddressArray(
-        Address(11, 'Petershill Road', 'Glasgow', 'EG339AF')
-    ),
+    Address(11, 'Petershill Road', 'Glasgow', 'EG339AF'),
     PersonName('Mrs', 'Stella', 'Shall'),
     '08352838462',
     MobilePhonesArray(
@@ -232,9 +216,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     9,
-    AddressArray(
-        Address(14, 'Torryburn Close', 'Glasgow', 'EHBOE0P')
-    ),
+    Address(14, 'Torryburn Close', 'Glasgow', 'EHBOE0P'),
     PersonName('Mstr', 'James', 'Muir'),
     '08352838462',
     MobilePhonesArray(
@@ -245,9 +227,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     10,
-    AddressArray(
-        Address(11, 'Telford Street', 'Inverness', 'HNCCJDO')
-    ),
+    Address(11, 'Telford Street', 'Inverness', 'HNCCJDO'),
     PersonName('Mr', 'Stewart', 'Kidd'),
     '06428273839',
     MobilePhonesArray(
@@ -258,9 +238,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     11,
-    AddressArray(
-        Address(64, 'Harrowden Road', 'Inverness', 'EH4499E')
-    ),
+    Address(64, 'Harrowden Road', 'Inverness', 'EH4499E'),
     PersonName('Ms', 'Ellie', 'Gregg'),
     '01882837283',
     MobilePhonesArray(
@@ -271,9 +249,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     12,
-    AddressArray(
-        Address(91, 'Dunain Road', 'Inverness', 'AH8N64S')
-    ),
+    Address(91, 'Dunain Road', 'Inverness', 'AH8N64S'),
     PersonName('Miss', 'Carla', 'Quinn'),
     '08293723739',
     MobilePhonesArray(
@@ -286,9 +262,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     13,
-    AddressArray(
-        Address(5, 'Douglas Row', 'Inverness', 'EH5N449')
-    ),
+    Address(5, 'Douglas Row', 'Inverness', 'EH5N449'),
     PersonName('Mr', 'Bruce', 'Greene'),
     '02947463838',
     MobilePhonesArray(
@@ -299,9 +273,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     14,
-    AddressArray(
-        Address(70, 'Kingsmills Road', 'Inverness', 'HH5RT5T')
-    ),
+    Address(70, 'Kingsmills Road', 'Inverness', 'HH5RT5T'),
     PersonName('Mr', 'Stephen', 'Lowe'),
     '09337473872',
     MobilePhonesArray(
@@ -312,9 +284,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     15,
-    AddressArray(
-        Address(10, 'Brighton Place', 'Aberdeen', 'HE5567N')
-    ),
+    Address(10, 'Brighton Place', 'Aberdeen', 'HE5567N'),
     PersonName('Miss', 'Sally', 'Anderson'),
     '03947937393',
     MobilePhonesArray(
@@ -326,9 +296,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     16,
-    AddressArray(
-        Address(30, 'Queen`s Lane South', 'Aberdeen', 'HSKA8HK')
-    ),
+    Address(30, 'Queen`s Lane South', 'Aberdeen', 'HSKA8HK'),
     PersonName('Ms', 'Allison', 'Fray'),
     '0927382773',
     MobilePhonesArray(
@@ -339,9 +307,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     17,
-    AddressArray(
-        Address(60, 'Union Grove Lane', 'Aberdeen', 'HSNA6S4')
-    ),
+    Address(60, 'Union Grove Lane', 'Aberdeen', 'HSNA6S4'),
     PersonName('Mr', 'Jack', 'Albyn'),
     '02937293772',
     MobilePhonesArray(
@@ -352,9 +318,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     18,
-    AddressArray(
-        Address(40, 'Rose Street', 'Aberdeen', 'ENHS7S5')
-    ),
+    Address(40, 'Rose Street', 'Aberdeen', 'ENHS7S5'),
     PersonName('Mrs', 'Molly', 'Irvine'),
     '02837292723',
     MobilePhonesArray(
@@ -367,9 +331,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     19,
-    AddressArray(
-        Address(34, 'Lawson Place', 'Dundee', 'HHG4A32')
-    ),
+    Address(34, 'Lawson Place', 'Dundee', 'HHG4A32'),
     PersonName('Miss', 'Ann', 'Drummond'),
     '02937237632',
     MobilePhonesArray(
@@ -380,9 +342,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     20,
-    AddressArray(
-        Address(22, 'Forebank Road', 'Dundee', 'ENBB7G7')
-    ),
+    Address(22, 'Forebank Road', 'Dundee', 'ENBB7G7'),
     PersonName('Mr', 'Allan', 'Strathmore'),
     '02938293738',
     MobilePhonesArray(
@@ -393,9 +353,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     21,
-    AddressArray(
-        Address(48, 'Lothian Road', 'Edinburgh', 'EH3BBG7')
-    ),
+    Address(48, 'Lothian Road', 'Edinburgh', 'EH3BBG7'),
     PersonName('Mrs', 'Haley', 'Jones'),
     '08383727629',
     MobilePhonesArray(
@@ -407,9 +365,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     22,
-    AddressArray(
-        Address(42, 'Queen`s Lane South', 'Aberdeen', 'HBSGCJG')
-    ),
+    Address(42, 'Queen`s Lane South', 'Aberdeen', 'HBSGCJG'),
     PersonName('Mr', 'Alex', 'Johansen'),
     '08338346643',
     MobilePhonesArray(
@@ -420,9 +376,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     23,
-    AddressArray(
-        Address(49, 'Forebank Road', 'Dundee', 'ENB99L7')
-    ),
+    Address(49, 'Forebank Road', 'Dundee', 'ENB99L7'),
     PersonName('Mr', 'Jason', 'Easton'),
     '08384736643',
     MobilePhonesArray(
@@ -433,9 +387,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     24,
-    AddressArray(
-        Address(40, 'Rose Street', 'Aberdeen', 'ENHS7S5')
-    ),
+    Address(40, 'Rose Street', 'Aberdeen', 'ENHS7S5'),
     PersonName('Mr', 'Aidan', 'Wright'),
     '07146438643',
     MobilePhonesArray(
@@ -446,9 +398,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     25,
-    AddressArray(
-        Address(20, 'West Port', 'Edinburgh', 'EHOP2HN')
-    ),
+    Address(20, 'West Port', 'Edinburgh', 'EHOP2HN'),
     PersonName('Mrs', 'Sarah', 'Cochrane'),
     '01735244643',
     MobilePhonesArray(
@@ -459,9 +409,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     26,
-    AddressArray(
-        Address(23, 'Brighton Place', 'Aberdeen', 'HE5508N')
-    ),
+    Address(23, 'Brighton Place', 'Aberdeen', 'HE5508N'),
     PersonName('Mstr', 'Lilly', 'Holmes'),
     '08338374543',
     MobilePhonesArray(
@@ -472,9 +420,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     27,
-    AddressArray(
-        Address(37, 'Dunain Road', 'Inverness', 'AH8N64S')
-    ),
+    Address(37, 'Dunain Road', 'Inverness', 'AH8N64S'),
     PersonName('Mr', 'Robert', 'Carlson'),
     '08338399933',
     MobilePhonesArray(
@@ -485,9 +431,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     28,
-    AddressArray(
-        Address(16, 'George Street', 'Edinburgh', 'EH32MFH')
-    ),
+    Address(16, 'George Street', 'Edinburgh', 'EH32MFH'),
     PersonName('Mrs', 'Jane', 'Smith'),
     '03957482947',
     MobilePhonesArray(
@@ -498,9 +442,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     29,
-    AddressArray(
-        Address(44, 'West Port', 'Edinburgh', 'EH66SHN')
-    ),
+    Address(44, 'West Port', 'Edinburgh', 'EH66SHN'),
     PersonName('Miss', 'Joanne', 'Richards'),
     '08338346643',
     MobilePhonesArray(
@@ -511,9 +453,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     30,
-    AddressArray(
-        Address(23, 'Brighton Place', 'Aberdeen', 'HE5508N')
-    ),
+    Address(23, 'Brighton Place', 'Aberdeen', 'HE5508N'),
     PersonName('Ms', 'Zoe', 'Holmes'),
     '08338374543',
     MobilePhonesArray(
@@ -524,9 +464,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     31,
-    AddressArray(
-        Address(40, 'Leadburn Road', 'Glasgow', 'EH30HNS')
-    ),
+    Address(40, 'Leadburn Road', 'Glasgow', 'EH30HNS'),
     PersonName('Mrs', 'Carla', 'Gracey'),
     '01936287463',
     MobilePhonesArray(
@@ -537,9 +475,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     32,
-    AddressArray(
-        Address(6, 'George Street', 'Edinburgh', 'EH32MFH')
-    ),
+    Address(6, 'George Street', 'Edinburgh', 'EH32MFH'),
     PersonName('Mrs', 'Mary', 'Smith'),
     '03957482947',
     MobilePhonesArray(
@@ -550,9 +486,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     33,
-    AddressArray(
-        Address(6, 'George Street', 'Edinburgh', 'EH32MFH')
-    ),
+    Address(6, 'George Street', 'Edinburgh', 'EH32MFH'),
     PersonName('Ms', 'Heather', 'Graham'),
     '03957482947',
     MobilePhonesArray(
@@ -563,9 +497,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     34,
-    AddressArray(
-        Address(4, 'Torryburn Close', 'Glasgow', 'EHBOE0P')
-    ),
+    Address(4, 'Torryburn Close', 'Glasgow', 'EHBOE0P'),
     PersonName('Mr', 'David', 'Mall'),
     '08352838462',
     MobilePhonesArray(
@@ -576,9 +508,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     35,
-    AddressArray(
-        Address(11, 'Dykemuir Street', 'Glasgow', 'EHNC5A4')
-    ),
+    Address(11, 'Dykemuir Street', 'Glasgow', 'EHNC5A4'),
     PersonName('Ms', 'Briteny', 'Reyburn'),
     '07293736462',
     MobilePhonesArray(
@@ -589,9 +519,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     36,
-    AddressArray(
-        Address(9, 'Petershill Drive', 'Glasgow', 'HNS9M43')
-    ),
+    Address(9, 'Petershill Drive', 'Glasgow', 'HNS9M43'),
     PersonName('Miss', 'Fiona', 'Smithers'),
     '09274826372',
     MobilePhonesArray(
@@ -602,9 +530,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     37,
-    AddressArray(
-        Address(20, 'Rye Drive', 'Glasgow', 'HD3A44S')
-    ),
+    Address(20, 'Rye Drive', 'Glasgow', 'HD3A44S'),
     PersonName('Mstr', 'Samantha', 'Jackson'),
     '07362673827',
     MobilePhonesArray(
@@ -617,9 +543,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     38,
-    AddressArray(
-        Address(1, 'Petershill Road', 'Glasgow', 'EG339AF')
-    ),
+    Address(1, 'Petershill Road', 'Glasgow', 'EG339AF'),
     PersonName('Miss', 'Demi', 'Shall'),
     '08352838462',
     MobilePhonesArray(
@@ -630,9 +554,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     39,
-    AddressArray(
-        Address(4, 'Torryburn Close', 'Glasgow', 'EHBOE0P')
-    ),
+    Address(4, 'Torryburn Close', 'Glasgow', 'EHBOE0P'),
     PersonName('Mr', 'James', 'Evans'),
     '08352838462',
     MobilePhonesArray(
@@ -643,9 +565,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     40,
-    AddressArray(
-        Address(1, 'Telford Street', 'Inverness', 'HNCCJDO')
-    ),
+    Address(1, 'Telford Street', 'Inverness', 'HNCCJDO'),
     PersonName('Mrs', 'Rachael', 'Stewart'),
     '06428273839',
     MobilePhonesArray(
@@ -656,9 +576,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     41,
-    AddressArray(
-        Address(6, 'Harrowden Road', 'Inverness', 'EH4499E')
-    ),
+    Address(6, 'Harrowden Road', 'Inverness', 'EH4499E'),
     PersonName('Ms', 'Rebecca', 'Howards'),
     '01882837283',
     MobilePhonesArray(
@@ -669,9 +587,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     42,
-    AddressArray(
-        Address(9, 'Dunain Road', 'Inverness', 'AH8N64S')
-    ),
+    Address(9, 'Dunain Road', 'Inverness', 'AH8N64S'),
     PersonName('Mr', 'Carlos', 'Peterson'),
     '08293723739',
     MobilePhonesArray(
@@ -684,9 +600,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     43,
-    AddressArray(
-        Address(52, 'Douglas Row', 'Inverness', 'EH5N449')
-    ),
+    Address(52, 'Douglas Row', 'Inverness', 'EH5N449'),
     PersonName('Mr', 'Bryce', 'Brown'),
     '02947463838',
     MobilePhonesArray(
@@ -697,9 +611,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     44,
-    AddressArray(
-        Address(7, 'Kingsmills Road', 'Inverness', 'HH5RT5T')
-    ),
+    Address(7, 'Kingsmills Road', 'Inverness', 'HH5RT5T'),
     PersonName('Mr', 'George', 'Wallace'),
     '09337473872',
     MobilePhonesArray(
@@ -710,9 +622,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     45,
-    AddressArray(
-        Address(1, 'Brighton Place', 'Aberdeen', 'HE5567N')
-    ),
+    Address(1, 'Brighton Place', 'Aberdeen', 'HE5567N'),
     PersonName('Miss', 'Sally', 'Anderson'),
     '03947937393',
     MobilePhonesArray(
@@ -724,9 +634,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     46,
-    AddressArray(
-        Address(3, 'Queen`s Lane South', 'Aberdeen', 'HSKA8HK')
-    ),
+    Address(3, 'Queen`s Lane South', 'Aberdeen', 'HSKA8HK'),
     PersonName('Mr', 'Alistiar', 'Cameron'),
     '0927382773',
     MobilePhonesArray(
@@ -737,9 +645,7 @@ insert into PersonTable values(
 
 insert into PersonTable values(
     47,
-    AddressArray(
-        Address(6, 'Union Grove Lane', 'Aberdeen', 'HSNA6S4')
-    ),
+    Address(6, 'Union Grove Lane', 'Aberdeen', 'HSNA6S4'),
     PersonName('Mr', 'Lewis', 'Clarke'),
     '02937293772',
     MobilePhonesArray(
@@ -750,9 +656,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     48,
-    AddressArray(
-        Address(4, 'Rose Street', 'Aberdeen', 'ENHS7S5')
-    ),
+    Address(4, 'Rose Street', 'Aberdeen', 'ENHS7S5'),
     PersonName('Mrs', 'Margaret', 'Hunam'),
     '02837292723',
     MobilePhonesArray(
@@ -765,9 +669,7 @@ insert into PersonTable values (
 
 insert into PersonTable values(
     49,
-    AddressArray(
-        Address(4, 'Lawson Place', 'Dundee', 'HHG4A32')
-    ),
+    Address(4, 'Lawson Place', 'Dundee', 'HHG4A32'),
     PersonName('Mstr', 'Jack', 'Holland'),
     '02937237632',
     MobilePhonesArray(
@@ -778,9 +680,7 @@ insert into PersonTable values(
 
 insert into PersonTable values (
     50,
-    AddressArray(
-        Address(2, 'Forebank Road', 'Dundee', 'ENBB7G7')
-    ),
+    Address(2, 'Forebank Road', 'Dundee', 'ENBB7G7'),
     PersonName('Mr', 'Scott', 'Brown'),
     '02938293738',
     MobilePhonesArray(
@@ -791,9 +691,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     51,
-    AddressArray(
-        Address(8, 'Lothian Road', 'Edinburgh', 'EH3BBG7')
-    ),
+    Address(8, 'Lothian Road', 'Edinburgh', 'EH3BBG7'),
     PersonName('Mr', 'Ryan', 'Goodman'),
     '08383727629',
     MobilePhonesArray(
@@ -805,9 +703,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     52,
-    AddressArray(
-        Address(4, 'Queen`s Lane South', 'Aberdeen', 'HBSGCJG')
-    ),
+    Address(4, 'Queen`s Lane South', 'Aberdeen', 'HBSGCJG'),
     PersonName('Mrs', 'Pamela', 'Scott'),
     '08338346643',
     MobilePhonesArray(
@@ -818,9 +714,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     53,
-    AddressArray(
-        Address(9, 'Forebank Road', 'Dundee', 'ENB99L7')
-    ),
+    Address(9, 'Forebank Road', 'Dundee', 'ENB99L7'),
     PersonName('Mr', 'Ewan', 'Carlton'),
     '08384736643',
     MobilePhonesArray(
@@ -831,9 +725,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     54,
-    AddressArray(
-        Address(4, 'Rose Street', 'Aberdeen', 'ENHS7S5')
-    ),
+    Address(4, 'Rose Street', 'Aberdeen', 'ENHS7S5'),
     PersonName('Miss', 'Ruth', 'Allen'),
     '07146438643',
     MobilePhonesArray(
@@ -844,9 +736,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     55,
-    AddressArray(
-        Address(2, 'West Port', 'Edinburgh', 'EHOP2HN')
-    ),
+    Address(2, 'West Port', 'Edinburgh', 'EHOP2HN'),
     PersonName('Ms', 'Chelsea', 'Patterson'),
     '01735244643',
     MobilePhonesArray(
@@ -857,9 +747,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     56,
-    AddressArray(
-        Address(2, 'Brighton Place', 'Aberdeen', 'HE5508N')
-    ),
+    Address(2, 'Brighton Place', 'Aberdeen', 'HE5508N'),
     PersonName('Mstr', 'Libby', 'Sommers'),
     '08338374543',
     MobilePhonesArray(
@@ -870,9 +758,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     57,
-    AddressArray(
-        Address(7, 'Dunain Road', 'Inverness', 'AH8N64S')
-    ),
+    Address(7, 'Dunain Road', 'Inverness', 'AH8N64S'),
     PersonName('Ms', 'Abby', 'Conner'),
     '08338399933',
     MobilePhonesArray(
@@ -883,9 +769,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     58,
-    AddressArray(
-        Address(6, 'George Street', 'Edinburgh', 'EH32MFH')
-    ),
+    Address(6, 'George Street', 'Edinburgh', 'EH32MFH'),
     PersonName('Mrs', 'Elizabeth', 'Duffy'),
     '03957482947',
     MobilePhonesArray(
@@ -896,9 +780,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     59,
-    AddressArray(
-        Address(4, 'West Port', 'Edinburgh', 'EH66SHN')
-    ),
+    Address(4, 'West Port', 'Edinburgh', 'EH66SHN'),
     PersonName('Mr', 'Alex', 'Jones'),
     '08338346643',
     MobilePhonesArray(
@@ -909,9 +791,7 @@ insert into PersonTable values (
 
 insert into PersonTable values (
     60,
-    AddressArray(
-        Address(3, 'Brighton Place', 'Aberdeen', 'HE5508N')
-    ),
+    Address(3, 'Brighton Place', 'Aberdeen', 'HE5508N'),
     PersonName('Mstr', 'Leanne', 'Livingstone'),
     '08338374543',
     MobilePhonesArray(

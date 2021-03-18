@@ -16,7 +16,6 @@ drop type CustomersArray force;
 drop type AccountsArray force;
 
 /* additional objects */
-drop type AddressArray force;
 drop type Address force;
 drop type Person force;
 drop type PersonName force;
@@ -53,11 +52,9 @@ create or replace type PersonName as object (
 /
 create or replace type MobilePhonesArray as varray(10) of varchar2(11)
 /
-create or replace type AddressArray as varray(10) of Address
-/
 create or replace type Person as object (
     persID int,
-    addr AddressArray,
+    addr Address,
     pName PersonName,
     homePhone varchar2(11),
     mobilePhones MobilePhonesArray,
@@ -296,7 +293,7 @@ create or replace trigger CheckCustomerAccounts
                 where acnt.accNum=deref(:new.accounts(i)).accNum;
                 
                 if acntCount=0 then
-                    raise_application_error(-20000, concat('This customer`s account at index ', concat(TO_CHAR(i), ' doesn`t exist.')));
+                    raise_application_error(-20000, 'This customer`s account at index ' || TO_CHAR(i) || ' doesn`t exist.');
                 end if;
             end loop;
         end;
@@ -315,7 +312,7 @@ create or replace trigger CheckAccountCustomers
                     where cust.custID=deref(:new.customers(i)).custID;
                     
                     if custCount=0 then
-                        raise_application_error(-20000, concat('This account`s customer at index ', concat(TO_CHAR(i), ' doesn`t exist.')));
+                        raise_application_error(-20000, 'This account`s customer at index ' || TO_CHAR(i) || ' doesn`t exist.');
                     end if;
                 end loop;
             end if;
@@ -337,7 +334,7 @@ create or replace trigger CheckWorksAtAccountsBranch
                     where deref(emp.bID).bID=deref(deref(:new.accounts(j)).bID).bID and deref(emp.pers).persID=deref(:new.pers).persID;
                 
                     if i>0 then
-                        raise_application_error(-20000, concat('Account at index ', concat(j, ' of this customer`s accounts is assigned to the same branch which this customer is employed at.')));
+                        raise_application_error(-20000, 'Account at index ' || TO_CHAR(j) || ' of this customer`s accounts is assigned to the same branch which this customer is employed at.');
                     end if;
                 end loop;                
             end if;
@@ -359,7 +356,7 @@ create or replace trigger CheckIsEmployeeAtBranch
                     where deref(emp.pers).persID=deref(deref(:new.customers(j)).pers).persID and deref(emp.bID).bID=deref(:new.bID).bID;
                 
                     if i>0 then
-                        raise_application_error(-20000, concat('Person at index ', concat(j, ' of this account`s customers is an employee at the branch which this account is assigned to.')));
+                        raise_application_error(-20000, 'Person at index ' || TO_CHAR(j) || ' of this account`s customers is an employee at the branch which this account is assigned to.');
                     end if;
                 end loop;                
             end if;
