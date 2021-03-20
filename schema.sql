@@ -33,8 +33,22 @@ create or replace type Address as object (
 create or replace type Branch as object (
     bID int,
     addr Address,
-    bPhone varchar2(11)
+    bPhone varchar2(11),
+    member function getAddress return varchar2
 ) not final
+/
+create or replace type body Branch as
+    member function getAddress return varchar2 is branchAddress varchar2(418);
+    begin
+        if self.addr is not NULL then
+            branchAddress := TO_CHAR(self.addr.buildingNum)
+                || ' ' || self.addr.street
+                || ', ' || self.addr.city
+                || ', ' || self.addr.postCode;
+        end if;
+        return branchAddress;
+    end getAddress;
+end;
 /
 create table BranchTable of Branch (
     bID primary key
