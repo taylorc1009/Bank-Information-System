@@ -85,7 +85,8 @@ create or replace type Person as object (
     homePhone varchar2(11),
     mobilePhones MobilePhonesArray,
     niNum varchar2(5),
-    member function getName return varchar2
+    member function getName return varchar2,
+    member function getAddress return varchar2
 ) final
 /
 create or replace type body Person as
@@ -98,6 +99,17 @@ create or replace type body Person as
         end if;
         return personName;
     end getName;
+    
+    member function getAddress return varchar2 is personAddress varchar2(418);
+    begin
+        if self.pName is not NULL then
+            personAddress := TO_CHAR(self.addr.buildingNum)
+                || ' ' || self.addr.street
+                || ', ' || self.addr.city
+                || ', ' || self.addr.postCode;
+        end if;
+        return personAddress;
+    end getAddress;
 end;
 /
 create table PersonTable of Person (
