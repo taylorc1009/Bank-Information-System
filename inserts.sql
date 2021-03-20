@@ -1580,6 +1580,17 @@ insert into AccountTable values(
     NULL
 );
 
+insert into AccountTable values(
+    21,
+    'savings',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=19),
+    NULL,
+    NULL,
+    '13-JUN-12',
+    NULL
+);
+
 
 
 
