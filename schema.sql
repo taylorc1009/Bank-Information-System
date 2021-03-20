@@ -84,8 +84,21 @@ create or replace type Person as object (
     pName PersonName,
     homePhone varchar2(11),
     mobilePhones MobilePhonesArray,
-    niNum varchar2(5)
+    niNum varchar2(5),
+    member function getName return varchar2
 ) final
+/
+create or replace type body Person as
+    member function getName return varchar2 is personName varchar2(44);
+    begin
+        if self.pName is not NULL then
+            personName := self.pName.title
+                || ' ' || self.pName.firstName
+                || ' ' || self.pName.surName;
+        end if;
+        return personName;
+    end getName;
+end;
 /
 create table PersonTable of Person (
     persID primary key,
@@ -298,14 +311,14 @@ alter type CustomerAccount
 add member function getCustomerNames return varchar2 cascade;
 /
 create or replace type body CustomerAccount as
-    member function getCustomerNames return varchar2 is customerNames varchar2(418);
-    customerName varchar2(418) default NULL;
+    member function getCustomerNames return varchar2 is customerNames varchar2(416);
+    customerName varchar2(40) default NULL;
     begin
         if self.customers is not NULL then
             for i in self.customers.first .. self.customers.last loop
                 customerName := NULL;
                 
-                select concat(pers.pName.firstName || ' ', pers.pname.surName) into customerName
+                select pers.getName() into customerName
                 from PersonTable pers
                 join CustomerTable cust on (pers.persID = deref(cust.pers).persID)
                 where cust.custID = deref(self.customers(i)).custID;
