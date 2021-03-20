@@ -38,7 +38,7 @@ create or replace type Branch as object (
 ) not final
 /
 create or replace type body Branch as
-    member function getAddress return varchar2 is branchAddress varchar2(418);
+    member function getAddress return varchar2 is branchAddress varchar2(56);
     begin
         if self.addr is not NULL then
             branchAddress := TO_CHAR(self.addr.buildingNum)
@@ -100,7 +100,7 @@ create or replace type body Person as
         return personName;
     end getName;
     
-    member function getAddress return varchar2 is personAddress varchar2(418);
+    member function getAddress return varchar2 is personAddress varchar2(56);
     begin
         if self.pName is not NULL then
             personAddress := TO_CHAR(self.addr.buildingNum)
