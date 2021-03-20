@@ -280,6 +280,35 @@ create table CustomerTable of Customer (
     custID primary key
 );
 /
+alter type CustomerAccount
+add member function getCustomerNames return varchar2 cascade;
+/
+create or replace type body CustomerAccount as
+    member function getCustomerNames return varchar2 is customerNames varchar2(418);
+    customerName varchar2(418) default NULL;
+    begin
+        if self.customers is not NULL then
+            for i in self.customers.first .. self.customers.last loop
+                customerName := NULL;
+                
+                select concat(pers.pName.firstName || ' ', pers.pname.surName) into customerName
+                from PersonTable pers
+                join CustomerTable cust on (pers.persID = deref(cust.pers).persID)
+                where cust.custID = deref(self.customers(i)).custID;
+                
+                if customerName is not NULL then
+                    if customerNames is NULL then
+                        customerNames := customerName;
+                    else
+                        customerNames := concat(customerNames || ', ', customerName);
+                    end if;
+                end if;
+            end loop;
+        end if;
+        return customerNames;
+    end getCustomerNames;
+end;
+/
 create or replace trigger CheckPersonIsAlreadyCustomer
     before insert or update
         of pers
