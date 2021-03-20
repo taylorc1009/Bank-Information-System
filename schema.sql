@@ -24,7 +24,7 @@ drop type MobilePhonesArray force;
 
 
 create or replace type Address as object (
-    houseNum int,
+    buildingNum int,
     street varchar2(20),
     city varchar2(20),
     postCode varchar2(7)
