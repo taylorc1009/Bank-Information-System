@@ -355,6 +355,7 @@ create or replace type body CustomerAccount as
     begin
         if self.customers is not NULL then
             for i in self.customers.first .. self.customers.last loop
+                -- it would be quicker to simply check this in the if statement, but 'deref' cannot be used outside of a query
                 select count(*) into persCount
                 from PersonTable pers
                 where pers.persID = deref(deref(self.customers(i)).pers).persID and pers.persID = persID;
@@ -387,6 +388,30 @@ create or replace trigger CheckPersonIsAlreadyCustomer
 create table AccountTable of CustomerAccount (
     accNum primary key
 );
+/
+alter type Customer
+add member function containsAccount(accNum int) return varchar2 cascade;
+/
+create or replace type body Customer as
+    member function containsAccount(accNum int) return varchar2 is response varchar2(3);
+    acntCount integer default 0;
+    begin
+        if self.accounts is not NULL then
+            for i in self.accounts.first .. self.accounts.last loop
+                acntCount := 0;
+                -- it would be quicker to simply check this in the if statement, but 'deref' cannot be used outside of a query
+                select count(*) into acntCount
+                from AccountTable acnt
+                where acnt.accNum = deref(self.accounts(i)).accNum and acnt.accNum = accNum;
+
+                if acntCount > 0 then
+                    return 'yes';
+                end if;
+            end loop;
+        end if;
+        return 'no';
+    end containsAccount;
+end;
 /
 create or replace trigger CheckAccountType
     before insert or update
