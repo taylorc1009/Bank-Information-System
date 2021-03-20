@@ -7,25 +7,21 @@ where instr(lower(p.pName.firstName), 'st') != 0 and p.addr.city = 'Glasgow' and
 );
 
 /* query 'b' */
-select count(distinct deref(acnt.bID).bID) as accounts_at_branch,
-    br.addr.buildingNum as building_number,
-    br.addr.street as street,
-    br.addr.city as city,
-    br.addr.postCode as post_code
+select count(distinct deref(acnt.bID).bID) as accounts_at_branch, br.getAddress() as address
 from AccountTable acnt
 join BranchTable br on (deref(acnt.bID).bID = br.bID)
-group by br.bID, br.addr.buildingNum, br.addr.street, br.addr.city, br.addr.postCode;
+group by br.bID, br.getAddress();
 
 /* query 'c' */
-select br.addr.buildingNum as building_number,
-    br.addr.street as street,
-    br.addr.city as city,
-    br.addr.postCode as post_code,
+select br.getAddress(),
     acnt.getCustomerNames() as customers,
     acnt.balance as account_balance
 from AccountTable acnt
 join BranchTable br on (deref(acnt.bID).bID = br.bID)
-where acnt.accType = 'savings'
-group by br.bID, br.addr.buildingNum, br.addr.street, br.addr.city, br.addr.postCode, 
-acnt.getCustomerNames(), acnt.balance
-order by acnt.balance;
+where acnt.accType = 'savings' and acnt.accNum in (
+    select sAcnt.accNum
+    from AccountTable sAcnt
+    group by sAcnt.accNum, deref(sAcnt.bID).bID, sAcnt.balance
+    order by sAcnt.balance
+)
+group by br.bID, br.getAddress(), acnt.getCustomerNames(), acnt.balance;
