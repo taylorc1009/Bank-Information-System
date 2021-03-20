@@ -322,6 +322,9 @@ create table CustomerTable of Customer (
 alter type CustomerAccount
 add member function getCustomerNames return varchar2 cascade;
 /
+alter type CustomerAccount
+add member function containsPerson(persID int) return varchar2 cascade;
+/
 create or replace type body CustomerAccount as
     member function getCustomerNames return varchar2 is customerNames varchar2(416);
     customerName varchar2(40) default NULL;
@@ -346,6 +349,23 @@ create or replace type body CustomerAccount as
         end if;
         return customerNames;
     end getCustomerNames;
+    
+    member function containsPerson(persID int) return varchar2 is response varchar2(3);
+    persCount integer default 0;
+    begin
+        if self.customers is not NULL then
+            for i in self.customers.first .. self.customers.last loop
+                select count(*) into persCount
+                from PersonTable pers
+                where pers.persID = deref(deref(self.customers(i)).pers).persID and pers.persID = persID;
+                
+                if persCount > 0 then
+                    return 'yes';
+                end if;
+            end loop;
+        end if;
+        return 'no';
+    end containsPerson;
 end;
 /
 create or replace trigger CheckPersonIsAlreadyCustomer

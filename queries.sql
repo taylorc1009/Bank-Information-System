@@ -11,7 +11,7 @@ where instr(lower(p.pName.firstName), 'st') != 0 and p.addr.city = 'Glasgow' and
 
 
 /* query 'b' */
-select count(distinct deref(acnt.bID).bID) as accounts_at_branch, br.getAddress() as address
+select count(distinct acnt.accNum) as accounts_at_branch, br.getAddress() as address
 from AccountTable acnt
 join BranchTable br on (deref(acnt.bID).bID = br.bID)
 group by br.bID, br.getAddress();
@@ -43,11 +43,20 @@ select br.getAddress() as address, acnt.getCustomerNames() as customers, acnt.ba
 from BranchTable br
 join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
 where acnt.accType = 'savings' and acnt.accNum in (
-    select sAcnt.accNum
+    select sAcnt.accNum, max(sAcnt.balance)
     from AccountTable sAcnt
-    group by sAcnt.accNum, deref(sAcnt.bID).bID
-    order by sAcnt.balance desc
-    fetch first row only
+    group by sAcnt.accNum, deref(sAcnt.bID).bID, sAcnt.balance
 )
 group by br.bID, br.getAddress(), acnt.getCustomerNames(), acnt.balance
 order by acnt.balance desc;
+
+
+
+
+
+/* query 'd' */
+select br.getAddress(), deref(acnt.bID).getAddress()
+from BranchTable br
+join AccountTable acnt on (deref(acnt.bID).bID = br.bID)
+join EmployeeTable emp on (deref(emp.bID).bID = br.bID)
+where emp.supervisorID is not NULL and acnt.containsPerson(deref(emp.pers).persID) = 'yes'
