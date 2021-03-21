@@ -496,7 +496,7 @@ create or replace trigger CheckAccountBranch
             end if;
         end;
         /
-create or replace trigger CheckCustomerAccounts
+create or replace trigger CheckCustomersAccountExists
     before insert or update
         of accounts
         on CustomerTable
@@ -514,7 +514,7 @@ create or replace trigger CheckCustomerAccounts
             end loop;
         end;
         /
-create or replace trigger CheckAccountCustomers
+create or replace trigger CheckAccountsCustomerExists
     before insert or update
         of customers
         on AccountTable
