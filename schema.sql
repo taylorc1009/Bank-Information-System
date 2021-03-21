@@ -328,6 +328,29 @@ add member function containsPerson(persID int) return varchar2 cascade;
 alter type CustomerAccount
 add member function countCustomers return integer cascade;
 /
+alter type CustomerAccount
+add member procedure addCustomer(cust ref Customer) cascade;
+/
+create or replace trigger CheckPersonIsAlreadyCustomer
+    before insert or update
+        of pers
+        on CustomerTable
+        for each row
+        declare i int;
+        begin
+            select count(*) into i
+            from CustomerTable cust
+            where deref(cust.pers).persID=deref(:new.pers).persID;
+            
+            if i>0 then
+                raise_application_error(-20000, 'This person is already a customer.');
+            end if;
+        end;
+        /
+create table AccountTable of CustomerAccount (
+    accNum primary key
+);
+/
 create or replace type body CustomerAccount as
     member function getCustomerNames return varchar2 is customerNames varchar2(416);
     customerName varchar2(40) default NULL;
@@ -375,32 +398,52 @@ create or replace type body CustomerAccount as
     begin
         if self.customers is not NULL then
             for i in self.customers.first .. self.customers.last loop
-                c := i;
+                c := c + 1;
             end loop;
         end if;
         return c;
     end countCustomers;
-end;
-/
-create or replace trigger CheckPersonIsAlreadyCustomer
-    before insert or update
-        of pers
-        on CustomerTable
-        for each row
-        declare i int;
-        begin
-            select count(*) into i
-            from CustomerTable cust
-            where deref(cust.pers).persID=deref(:new.pers).persID;
+    
+    member procedure addCustomer(cust ref Customer) is
+    len integer default self.countCustomers();
+    custList CustomersArray;
+    countResult int;
+    begin
+        if len is NULL then
+            self.customers := CustomersArray();
+            len := 0;
+        else
+            -- the list of customers for this account needs to be stored before it can be accessed
+            select acnt.customers into custList
+            from AccountTable acnt
+            where acnt.accNum = self.accNum;
             
-            if i>0 then
-                raise_application_error(-20000, 'This person is already a customer.');
-            end if;
-        end;
-        /
-create table AccountTable of CustomerAccount (
-    accNum primary key
-);
+            for i in custList.first .. custList.last loop
+                select count(*) into countResult
+                from AccountTable acnt
+                where acnt.accNum = self.accNum and deref(custList(i)).custID = deref(cust).custID;
+                
+                if countResult > 0 then
+                    raise_application_error(-20000, 'This customer already owns this account.');
+                end if;
+                
+                select count(*) into countResult
+                from EmployeeTable emp
+                where deref(emp.pers).persID=deref(deref(cust).pers).persID and deref(emp.bID).bID=deref(self.bID).bID;
+                
+                if countResult > 0 then
+                    raise_application_error(-20000, 'The berson being added to this account`s customers is an employee at the branch which this account is assigned to.');
+                end if;
+            end loop;
+        end if;
+        if len < 10 then
+            self.customers.extend;
+            self.customers(len + 1) := cust;
+        else
+            raise_application_error(-20000, 'This account`s customers list is full.');
+        end if;
+    end addCustomer;
+end;
 /
 alter type Customer
 add member function containsAccount(accNum int) return varchar2 cascade;
