@@ -1603,9 +1603,21 @@ insert into CustomerTable values(
         (select ref(acnt) from AccountTable acnt where acnt.accNum=6)
     )
 );
-update AccountTable acnt set customers=CustomersArray(
-    (select ref(cust) from CustomerTable cust where cust.custID=1)
-) where acnt.accNum=6;
+declare
+    subjectAcnt CustomerAccount;
+    newCust integer;
+begin
+    select value(acnt) into subjectAcnt
+    from AccountTable acnt
+    where acnt.accNum=6;
+    
+    select ref(cust) into newCust
+    from CustomerTable cust
+    where cust.custID=1;
+    
+    subjectAcnt.addCustomer(newCust);
+end;
+/
 
 
 
@@ -1861,3 +1873,16 @@ insert into CustomerTable values(
 update AccountTable acnt set customers=CustomersArray(
     (select ref(cust) from CustomerTable cust where cust.custID=20)
 ) where acnt.accNum=20;
+
+
+
+insert into CustomerTable values(
+    21,
+    (select ref(pers) from PersonTable pers where pers.persID=17),
+    AccountsArray(
+        (select ref(acnt) from AccountTable acnt where acnt.accNum=9)
+    )
+);
+update AccountTable acnt set customers=CustomersArray(
+    (select ref(cust) from CustomerTable cust where cust.custID=21)
+) where acnt.accNum=9;
