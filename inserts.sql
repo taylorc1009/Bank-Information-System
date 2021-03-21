@@ -1605,7 +1605,7 @@ insert into CustomerTable values(
 );
 declare
     subjectAcnt CustomerAccount;
-    newCust integer;
+    newCust ref Customer;
 begin
     select value(acnt) into subjectAcnt
     from AccountTable acnt
