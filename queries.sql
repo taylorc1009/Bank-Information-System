@@ -60,3 +60,19 @@ from BranchTable br
 join AccountTable acnt on (deref(acnt.bID).bID = br.bID)
 join EmployeeTable emp on (deref(emp.bID).bID = br.bID)
 where emp.supervisorID is not NULL and acnt.containsPerson(deref(emp.pers).persID) = 'yes';
+
+
+
+
+/* query 'e' */
+select br.bID as address, acnt.getCustomerNames() as customers, max(acnt.limitOfFreeOD) as balance
+from BranchTable br
+join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
+where acnt.accType = 'current' and acnt.countCustomers() > 1
+group by br.bID, acnt.getCustomerNames(), acnt.limitOfFreeOD
+order by acnt.limitOfFreeOD desc;
+
+select acnt.getCustomerNames()
+from BranchTable br
+join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
+group by acnt.getCustomerNames();
