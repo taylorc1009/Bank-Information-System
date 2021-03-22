@@ -86,7 +86,14 @@ create or replace type body Branch as
 end;
 /
 create table BranchTable of Branch (
-    bID primary key
+    bID primary key,
+    constraint addr_not_null check (addr is not NULL
+        and addr.buildingNum is not NULL
+        and addr.street is not NULL
+        and addr.city is not NULL
+        and addr.street is not NULL
+    ),
+    constraint bPhone_const check (bPhone is not NULL)
 );
 /
 create or replace trigger CheckBranchPhone
