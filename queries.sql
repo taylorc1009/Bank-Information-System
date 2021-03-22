@@ -64,6 +64,7 @@ where emp.supervisorID is not NULL and acnt.containsPerson(deref(emp.pers).persI
 
 
 
+
 /* query 'e' */
 select br.bID as address, acnt.getCustomerNames() as customers, max(acnt.limitOfFreeOD) as balance
 from BranchTable br
@@ -76,3 +77,11 @@ select acnt.getCustomerNames()
 from BranchTable br
 join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
 group by acnt.getCustomerNames();
+
+
+
+/* query 'f' */
+
+/* query 'g' */
+
+/* query 'h' */
