@@ -234,7 +234,7 @@ create table EmployeeTable of Employee (
     constraint empPosition_not_null check (empPosition is not NULL),
     constraint salary_not_null check (salary is not NULL),
     constraint emp_bID_not_null check (bID is not NULL),
-    constraint emp_joinDate_not_null check (joinDate is not NULL)
+    constraint joinDate_not_null check (joinDate is not NULL)
 );
 /
 create or replace trigger CheckPersonIsAlreadyEmployee
@@ -376,7 +376,8 @@ alter type CustomerAccount
 add attribute (customers CustomersArray) cascade;
 
 create table CustomerTable of Customer (
-    custID primary key
+    custID primary key,
+    constraint cust_pers_not_null check (pers is not NULL)
 );
 /
 alter type CustomerAccount
@@ -408,7 +409,11 @@ create or replace trigger CheckPersonIsAlreadyCustomer
         end;
         /
 create table AccountTable of CustomerAccount (
-    accNum primary key
+    accNum primary key,
+    constraint accType_not_null check (accType is not NULL),
+    constraint balance_not_null check (balance is not NULL),
+    constraint acnt_bID_not_null check (bID is not NULL),
+    constraint openDate_not_null check (openDate is not NULL)
 );
 /
 create or replace type body CustomerAccount as
