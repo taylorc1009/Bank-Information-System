@@ -87,13 +87,13 @@ end;
 /
 create table BranchTable of Branch (
     bID primary key,
-    constraint addr_not_null check (addr is not NULL
+    constraint br_addr_not_null check (addr is not NULL
         and addr.buildingNum is not NULL
         and addr.street is not NULL
         and addr.city is not NULL
         and addr.street is not NULL
     ),
-    constraint bPhone_const check (bPhone is not NULL)
+    constraint bPhone__not_null check (bPhone is not NULL)
 );
 /
 create or replace trigger CheckBranchPhone
@@ -156,7 +156,20 @@ end;
 /
 create table PersonTable of Person (
     persID primary key,
-    constraint niNumConst unique(niNum)
+    constraint pers_addr_not_null check (addr is not NULL
+        and addr.buildingNum is not NULL
+        and addr.street is not NULL
+        and addr.city is not NULL
+        and addr.street is not NULL
+    ),
+    constraint pName_not_null check (pName is not NULL
+        and pName.title is not NULL
+        and pName.firstName is not NULL
+        and pName.surName is not NULL
+    ),
+    constraint homePhone_not_null check(homePhone is not NULL),
+    constraint niNum_not_null check (niNum is not NULL),
+    constraint niNum_unique unique(niNum)
 );
 /
 create or replace trigger CheckPersonTitle
@@ -216,7 +229,12 @@ create or replace type Employee as object (
 ) not final
 /
 create table EmployeeTable of Employee (
-    empID primary key
+    empID primary key,
+    constraint emp_pers_not_null check (pers is not NULL),
+    constraint empPosition_not_null check (empPosition is not NULL),
+    constraint salary_not_null check (salary is not NULL),
+    constraint emp_bID_not_null check (bID is not NULL),
+    constraint emp_joinDate_not_null check (joinDate is not NULL)
 );
 /
 create or replace trigger CheckPersonIsAlreadyEmployee
@@ -630,6 +648,8 @@ create or replace trigger InitialiseAccount
                 raise_application_error(-20000, 'Interest rate and free overdraft limit should be NULL - the bank`s system must initialise these itself.');
             else
                 :new.inRate:=dbms_random.value(3,8)/100;
-                :new.limitOfFreeOD:=dbms_random.value(1,10)*100;
+                if :new.accType = 'current' then
+                    :new.limitOfFreeOD:=dbms_random.value(1,10)*100;
+                end if;
             end if;
         end;
