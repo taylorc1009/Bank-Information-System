@@ -1,24 +1,59 @@
+/* the triggers don't need to be dropped as the're automatically dropped with the table they relate to */
+
 /* branch objects */
 drop type Branch force;
 drop table BranchTable purge;
+/*
+drop trigger CheckBranchPhone;
+*/
 
 /* person objects */
-drop table CustomerTable purge;
-drop table EmployeeTable purge;
 drop table PersonTable purge;
-drop type Customer force;
+drop type Person force;
+drop type PersonName force;
+/*
+drop trigger CheckPersonTitle;
+drop trigger CheckPersonHomePhone;
+drop trigger CheckPersonMobilePhones;
+drop trigger CheckPersonInsuranceNo;
+*/
+
+/* employee objects */
+drop table EmployeeTable purge;
 drop type Employee force;
+/*
+drop trigger CheckPersonIsAlreadyEmployee;
+drop trigger CheckEmployeePosition;
+drop trigger CheckSupervisorPosition;
+drop trigger CheckEmployeeHasValidSupervisor;
+drop trigger CheckEmployeeSupervisorBranch;
+drop trigger CheckEmployeeBranch;
+drop trigger CheckBranchSupervisor;
+*/
 
 /* account objects */
 drop table AccountTable purge;
 drop type CustomerAccount force;
 drop type CustomersArray force;
+/*
+drop trigger CheckAccountType;
+drop trigger CheckAccountBranch;
+drop trigger CheckIsEmployeeAtBranch;
+drop trigger InitialiseAccount;
+*/
+
+/* customer objects */
+drop table CustomerTable purge;
+drop type Customer force;
 drop type AccountsArray force;
+/*
+drop trigger CheckPersonIsAlreadyCustomer;
+drop trigger CheckCustomersAccountExists;
+drop trigger CheckWorksAtAccountsBranch;
+*/
 
 /* additional objects */
 drop type Address force;
-drop type Person force;
-drop type PersonName force;
 drop type MobilePhonesArray force;
 
 
