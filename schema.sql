@@ -417,11 +417,11 @@ create table AccountTable of CustomerAccount (
 );
 /
 create or replace type body CustomerAccount as
-    member function getCustomerNames return varchar2 is customerNames varchar2(416);
-    customerName varchar2(40) default NULL;
+    member function getCustomerNames return varchar2 is customerNames varchar2(456) default NULL;
+    customerName varchar2(44) default NULL;
     begin
         if self.customers is not NULL then
-            for i in self.customers.first .. self.customers.last loop
+            for i in 1 .. self.customers.count loop
                 customerName := NULL;
                 
                 select pers.getName() into customerName
@@ -433,7 +433,7 @@ create or replace type body CustomerAccount as
                     if customerNames is NULL then
                         customerNames := customerName;
                     else
-                        customerNames := concat(customerNames || ', ', customerName);
+                        customerNames := concat(customerNames, ', ' || customerName);
                     end if;
                 end if;
             end loop;
@@ -445,7 +445,7 @@ create or replace type body CustomerAccount as
     persCount integer default 0;
     begin
         if self.customers is not NULL then
-            for i in self.customers.first .. self.customers.last loop
+            for i in 1 .. self.customers.count loop
                 -- it would be quicker to simply check this in the if statement, but 'deref' cannot be used outside of a query
                 select count(*) into persCount
                 from PersonTable pers
@@ -459,31 +459,32 @@ create or replace type body CustomerAccount as
         return 'no';
     end containsPerson;
     
-    member function countCustomers return integer is c integer;
+    member function countCustomers return integer is c integer default 0;
     begin
         if self.customers is not NULL then
-            for i in self.customers.first .. self.customers.last loop
-                c := c + 1;
+            for i in 1 .. self.customers.count loop
+                if self.customers(i) is not NULL then
+                    c := c + 1;
+                end if;
             end loop;
         end if;
         return c;
     end countCustomers;
     
     member procedure addCustomer(cust ref Customer) is
-    len integer default self.countCustomers();
+    len integer := self.countCustomers();
     custList CustomersArray;
     countResult int;
     begin
-        if len is NULL then
+        if len = 0 then
             self.customers := CustomersArray();
-            len := 0;
         else
             -- the list of customers for this account needs to be stored before it can be accessed
             select acnt.customers into custList
             from AccountTable acnt
             where acnt.accNum = self.accNum;
             
-            for i in custList.first .. custList.last loop
+            for i in 1 .. custList.count loop
                 select count(*) into countResult
                 from AccountTable acnt
                 where acnt.accNum = self.accNum and deref(custList(i)).custID = deref(cust).custID;
@@ -502,7 +503,7 @@ create or replace type body CustomerAccount as
             end loop;
         end if;
         if len < 10 then
-            self.customers.extend;
+            self.customers.extend(1);
             self.customers(len + 1) := cust;
         else
             raise_application_error(-20000, 'This account`s customers list is full.');
@@ -587,7 +588,7 @@ create or replace trigger CheckAccountsCustomerExists
         declare custCount int;
         begin
             if :new.customers is not NULL then
-                for i in :new.customers.first .. :new.customers.last loop
+                for i in 1 .. :new.customers.count loop
                     select count(*) into custCount
                     from CustomerTable cust
                     where cust.custID=deref(:new.customers(i)).custID;
@@ -629,7 +630,7 @@ create or replace trigger CheckIsEmployeeAtBranch
         declare i int;
         begin
             if :new.customers is not NULL then /* an account's customers is initially NULL, in case it's customer needs to be created before we can create a reference to the customer */
-                for j in :new.customers.first .. :new.customers.last loop
+                for j in 1 .. :new.customers.count loop
                     i:=0;
                     
                     select count(*) into i
