@@ -20,7 +20,7 @@ group by br.bID, br.getAddress();
 
 
 
-/* query 'c' - none of these solutions work: the first 2 don't limit to 1 account per branch and the third doesn't execute due to an unexplained error */
+/* query 'c' - none of these solutions work: the first 2 don't limit to 1 account per branch and the third doesn't execute due no being able to get multiple columns from a subquery in a where clause */
 select br.getAddress() as address, acnt.getCustomerNames() as customers, max(acnt.balance) as balance
 from BranchTable br
 join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
