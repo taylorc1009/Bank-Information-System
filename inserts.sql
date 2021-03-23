@@ -1368,7 +1368,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '12-MAY-09',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1379,7 +1379,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '8-APR-13',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1390,7 +1390,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '26-FEB-16',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1401,7 +1401,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '3-JAN-10',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1412,7 +1412,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '21-JUL-12',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1423,7 +1423,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '9-MAR-10',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1434,7 +1434,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '8-JUL-07',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1445,7 +1445,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '16-AUG-10',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1456,7 +1456,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '10-SEP-14',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1467,7 +1467,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '1-OCT-13',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1478,7 +1478,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '19-DEC-06',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1489,7 +1489,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '2-OCT-07',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1500,7 +1500,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '14-AUG-09',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1511,7 +1511,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '7-MAR-10',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1522,7 +1522,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '27-NOV-08',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1533,7 +1533,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '25-NOV-13',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1544,7 +1544,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '8-JUL-14',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1555,7 +1555,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '9-JAN-07',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1566,7 +1566,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '22-MAY-12',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1577,7 +1577,7 @@ insert into AccountTable values(
     NULL,
     NULL,
     '13-JUN-12',
-    NULL
+    CustomersArray()
 );
 
 insert into AccountTable values(
@@ -1588,7 +1588,51 @@ insert into AccountTable values(
     NULL,
     NULL,
     '13-JUN-12',
-    NULL
+    CustomersArray()
+);
+
+insert into AccountTable values(
+    22,
+    'savings',
+    5300,
+    (select ref(br) from BranchTable br where br.bID=3),
+    NULL,
+    NULL,
+    '21-JUL-12',
+    CustomersArray()
+);
+
+insert into AccountTable values(
+    23,
+    'savings',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=11),
+    NULL,
+    NULL,
+    '9-AUG-15',
+    CustomersArray()
+);
+
+insert into AccountTable values(
+    24,
+    'savings',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=18),
+    NULL,
+    NULL,
+    '4-JUL-16',
+    CustomersArray()
+);
+
+insert into AccountTable values(
+    25,
+    'current',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=20),
+    NULL,
+    NULL,
+    '4-APR-14',
+    CustomersArray()
 );
 
 
