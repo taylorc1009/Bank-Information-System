@@ -458,57 +458,6 @@ create or replace type body CustomerAccount as
         end if;
         return 'no';
     end containsPerson;
-    
-    member function countCustomers return integer is c integer default 0;
-    begin
-        if self.customers is not NULL then
-            for i in 1 .. self.customers.count loop
-                if self.customers(i) is not NULL then
-                    c := c + 1;
-                end if;
-            end loop;
-        end if;
-        return c;
-    end countCustomers;
-    
-    member procedure addCustomer(cust ref Customer) is
-    len integer := self.countCustomers();
-    custList CustomersArray;
-    countResult int;
-    begin
-        if len = 0 then
-            self.customers := CustomersArray();
-        else
-            -- the list of customers for this account needs to be stored before it can be accessed
-            select acnt.customers into custList
-            from AccountTable acnt
-            where acnt.accNum = self.accNum;
-            
-            for i in 1 .. custList.count loop
-                select count(*) into countResult
-                from AccountTable acnt
-                where acnt.accNum = self.accNum and deref(custList(i)).custID = deref(cust).custID;
-                
-                if countResult > 0 then
-                    raise_application_error(-20000, 'This customer already owns this account.');
-                end if;
-                
-                select count(*) into countResult
-                from EmployeeTable emp
-                where deref(emp.pers).persID=deref(deref(cust).pers).persID and deref(emp.bID).bID=deref(self.bID).bID;
-                
-                if countResult > 0 then
-                    raise_application_error(-20000, 'The berson being added to this account`s customers is an employee at the branch which this account is assigned to.');
-                end if;
-            end loop;
-        end if;
-        if len < 10 then
-            self.customers.extend(1);
-            self.customers(len + 1) := cust;
-        else
-            raise_application_error(-20000, 'This account`s customers list is full.');
-        end if;
-    end addCustomer;
 end;
 /
 alter type Customer
