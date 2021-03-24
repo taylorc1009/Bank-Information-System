@@ -275,7 +275,8 @@ create or replace type Employee as object (
     empPosition varchar2(20),
     salary int,
     bID ref Branch,
-    joinDate date
+    joinDate date,
+    member function awardEvaluation return varchar2
 ) not final
 /
 create table EmployeeTable of Employee (
@@ -286,6 +287,13 @@ create table EmployeeTable of Employee (
     constraint emp_bID_not_null check (bID is not NULL),
     constraint joinDate_not_null check (joinDate is not NULL)
 );
+/
+create or replace type body Employee as
+    member function awardEvaluation return varchar2 is medal varchar2(6);
+    begin
+        return NULL;
+    end awardEvaluation;
+end;
 /
 create or replace trigger CheckPersonIsAlreadyEmployee
     before insert or update

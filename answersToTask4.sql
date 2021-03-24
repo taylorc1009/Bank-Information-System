@@ -90,3 +90,6 @@ where deref(deref(emp.supervisorID).pers).pName.title = 'Mr'
 
 
 /* query 'h' */
+select deref(emp.pers).getName() as name, emp.awardEvaluation() as medal
+from EmployeeTable emp
+where emp.awardEvaluation() is not NULL;
