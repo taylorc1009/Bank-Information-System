@@ -1650,6 +1650,46 @@ insert into EmployeeTable values(
     '15-JUL-14'
 );
 
+insert into EmployeeTable values(
+    63,
+    (select ref(pers) from PersonTable pers where pers.persID=68),
+    (select ref(emp) from EmployeeTable emp where emp.empID=29),
+    'accountant',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=11),
+    '12-JUL-17'
+);
+
+insert into EmployeeTable values(
+    64,
+    (select ref(pers) from PersonTable pers where pers.persID=69),
+    (select ref(emp) from EmployeeTable emp where emp.empID=29),
+    'accountant',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=11),
+    '7-AUG-16'
+);
+
+insert into EmployeeTable values(
+    65,
+    (select ref(pers) from PersonTable pers where pers.persID=70),
+    (select ref(emp) from EmployeeTable emp where emp.empID=29),
+    'cashier',
+    4000,
+    (select ref(br) from BranchTable br where br.bID=11),
+    '25-APR-14'
+);
+
+insert into EmployeeTable values(
+    66,
+    (select ref(pers) from PersonTable pers where pers.persID=71),
+    (select ref(emp) from EmployeeTable emp where emp.empID=29),
+    'cashier',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=11),
+    '28-OCT-17'
+);
+
 
 
 
