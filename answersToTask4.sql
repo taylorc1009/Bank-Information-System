@@ -89,5 +89,11 @@ where pers.countMobilePhones() > 1 and pers.findMobileStartsWith('0760') = 'yes'
 
 
 /* query 'g' */
+select deref(emp.pers).getName() as name
+from EmployeeTable emp
+where deref(deref(emp.supervisorID).pers).pName.title = 'Mr'
+    and deref(deref(emp.supervisorID).pers).pName.surName = 'Smith'
+    and deref(deref(deref(emp.supervisorID).supervisorID).pers).pName.title = 'Mrs'
+    and deref(deref(deref(emp.supervisorID).supervisorID).pers).pName.surname = 'Jones';
 
 /* query 'h' */
