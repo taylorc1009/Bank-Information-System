@@ -290,7 +290,20 @@ create table EmployeeTable of Employee (
 /
 create or replace type body Employee as
     member function awardEvaluation return varchar2 is medal varchar2(6);
+    employeesSupervised int;
     begin
+        select count(*) into employeesSupervised 
+        from EmployeeTable emp
+        where deref(emp.supervisorID).empID = self.empID;
+        
+        if self.joinDate < add_months(CURRENT_DATE, -(12 * 10)) and employeesSupervised > 8 then
+            return 'gold';
+        elsif self.joinDate < add_months(CURRENT_DATE, -(12 * 8)) and employeesSupervised > 5 then
+            return 'silver';
+        elsif self.joinDate < add_months(CURRENT_DATE, -(12 * 4)) then
+            return 'bronze';
+        end if;
+        
         return NULL;
     end awardEvaluation;
 end;
