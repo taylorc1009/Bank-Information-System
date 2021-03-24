@@ -233,11 +233,13 @@ create or replace trigger CheckPersonMobilePhones
         on PersonTable
         for each row
         begin
-            for i in 1 .. :new.mobilePhones.count loop
-                if not regexp_like(:new.mobilePhones(i), '^[[:digit:]]{8,11}') then
-                    raise_application_error(-20000, 'This person`s mobile phone number at index ' || i || ' wasn`t 8-11 numbers long or didn`t consist of only numbers.');
-                end if;
-            end loop;
+            if :new.mobilePhones is not NULL then
+                for i in 1 .. :new.mobilePhones.count loop
+                    if not regexp_like(:new.mobilePhones(i), '^[[:digit:]]{8,11}') then
+                        raise_application_error(-20000, 'This person`s mobile phone number at index ' || i || ' wasn`t 8-11 numbers long or didn`t consist of only numbers.');
+                    end if;
+                end loop;
+            end if;
         end;
         /
 create or replace trigger CheckPersonInsuranceNo
