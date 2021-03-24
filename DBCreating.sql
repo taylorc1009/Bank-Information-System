@@ -505,7 +505,7 @@ alter type Customer
 add member function containsAccount(accNum int) return varchar2 cascade;
 /
 alter type Customer
-add member function countAccounts(accNum int) return int cascade;
+add member function countAccounts return int cascade;
 /
 create or replace type body Customer as
     member function containsAccount(accNum int) return varchar2 is response varchar2(3);
@@ -524,6 +524,18 @@ create or replace type body Customer as
         end if;
         return 'no';
     end containsAccount;
+    
+    member function countAccounts return int is c int default 0;
+    begin
+        if self.accounts is not NULL then
+            for i in 1 .. self.accounts.count loop
+                if self.accounts(i) is not NULL then
+                    c := c + 1;
+                end if;
+            end loop;
+        end if;
+        return c;
+    end countAccounts;
 end;
 /
 create or replace trigger CheckAccountType
