@@ -48,7 +48,8 @@ select deref(emp.bID).getAddress() as branch_address, deref(acnt.bID).getAddress
 from CustomerTable cust
 join AccountTable acnt on (acnt.containsPerson(deref(cust.pers).persID) = 'yes')
 join EmployeeTable emp on (deref(cust.pers).persID = deref(emp.pers).persID)
-where emp.supervisorID is not NULL and acnt.containsPerson(deref(emp.pers).persID) = 'yes';
+where emp.supervisorID is not NULL
+group by deref(emp.bID).bID, deref(emp.bID).getAddress(), deref(acnt.bID).getAddress();
 
 
 
