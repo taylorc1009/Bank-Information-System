@@ -386,6 +386,9 @@ add member function getCustomerNames return varchar2 cascade;
 alter type CustomerAccount
 add member function containsPerson(persID int) return varchar2 cascade;
 /
+alter type CustomerAccount
+add member function countCustomers return int cascade;
+/
 create or replace trigger CheckPersonIsAlreadyCustomer
     before insert or update
         of pers
@@ -452,6 +455,18 @@ create or replace type body CustomerAccount as
         end if;
         return 'no';
     end containsPerson;
+    
+    member function countCustomers return int is c int default 0;
+    begin
+        if self.customers is not NULL then
+            for i in 1 .. self.customers.count loop
+                if self.customers(i) is not NULL then
+                    c := c + 1;
+                end if;
+            end loop;
+        end if;
+        return c;
+    end countCustomers;
 end;
 /
 alter type Customer
