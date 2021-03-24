@@ -2061,6 +2061,61 @@ insert into AccountTable values(
     CustomersArray()
 );
 
+insert into AccountTable values(
+    26,
+    'savings',
+    5900,
+    (select ref(br) from BranchTable br where br.bID=3),
+    NULL,
+    NULL,
+    '17-APR-2009',
+    CustomersArray()
+);
+
+insert into AccountTable values(
+    27,
+    'savings',
+    3900,
+    (select ref(br) from BranchTable br where br.bID=5),
+    NULL,
+    NULL,
+    '26-AUG-2013',
+    CustomersArray()
+);
+
+insert into AccountTable values(
+    28,
+    'savings',
+    20100,
+    (select ref(br) from BranchTable br where br.bID=11),
+    NULL,
+    NULL,
+    '27-NOV-2014',
+    CustomersArray()
+);
+
+insert into AccountTable values(
+    29,
+    'savings',
+    12200,
+    (select ref(br) from BranchTable br where br.bID=14),
+    NULL,
+    NULL,
+    '13-OCT-2015',
+    CustomersArray()
+);
+
+insert into AccountTable values(
+    30,
+    'current',
+    13900,
+    (select ref(br) from BranchTable br where br.bID=7),
+    NULL,
+    NULL,
+    '17-SEP-2010',
+    CustomersArray()
+);
+
 
 
 
