@@ -44,7 +44,7 @@ order by acnt.balance desc;
 
 
 /* query 'd' */
-select deref(emp.bID).getAddress() as branch_address, deref(acnt.bID).getAddress() as accounts_branch_address
+select deref(emp.bID).getAddress() as employee_branch_address, deref(acnt.bID).getAddress() as accounts_branch_address
 from CustomerTable cust
 join AccountTable acnt on (acnt.containsPerson(deref(cust.pers).persID) = 'yes')
 join EmployeeTable emp on (deref(cust.pers).persID = deref(emp.pers).persID)
