@@ -233,7 +233,7 @@ create or replace trigger CheckPersonMobilePhones
         on PersonTable
         for each row
         begin
-            for i in :new.mobilePhones.first .. :new.mobilePhones.last loop
+            for i in 1 .. :new.mobilePhones.count loop
                 if not regexp_like(:new.mobilePhones(i), '^[[:digit:]]{8,11}') then
                     raise_application_error(-20000, 'This person`s mobile phone number at index ' || i || ' wasn`t 8-11 numbers long or didn`t consist of only numbers.');
                 end if;
@@ -275,13 +275,13 @@ create or replace trigger CheckPersonIsAlreadyEmployee
         of pers
         on EmployeeTable
         for each row
-        declare i int;
+        declare empCount int;
         begin
-            select count(*) into i
+            select count(*) into empCount
             from EmployeeTable emp
-            where deref(emp.pers).persID=deref(:new.pers).persID;
+            where deref(emp.pers).persID = deref(:new.pers).persID;
             
-            if i>0 then
+            if empCount > 0 then
                 raise_application_error(-20000, 'This person is already an employee.');
             end if;
         end;
@@ -313,14 +313,14 @@ create or replace trigger CheckEmployeeHasValidSupervisor
         of supervisorID
         on EmployeeTable
         for each row
-        declare i int;
+        declare empCount int;
         begin
             if :new.empPosition not in ('head', 'manager', 'team leader') then
-                select count(*) into i
+                select count(*) into empCount
                 from EmployeeTable emp
-                where emp.empID=deref(:new.supervisorID).empID and emp.empPosition in ('head', 'manager', 'team leader');
+                where emp.empID = deref(:new.supervisorID).empID and emp.empPosition in ('head', 'manager', 'team leader');
                 
-                if i=0 then
+                if empCount = 0 then
                     raise_application_error(-20000, 'Employees who aren`t managers must have a valid supervisor - either a: head, manager, or team leader.');
                 end if;
             end if;
@@ -331,14 +331,14 @@ create or replace trigger CheckEmployeeSupervisorBranch
         of supervisorID
         on EmployeeTable
         for each row
-        declare i int;
+        declare empCount int;
         begin
             if :new.supervisorID is not NULL then
-                select count(*) into i
+                select count(*) into empCount
                 from EmployeeTable emp
-                where emp.empID=deref(:new.supervisorID).empID and deref(emp.bID).bID=deref(:new.bID).bID;
+                where emp.empID = deref(:new.supervisorID).empID and deref(emp.bID).bID = deref(:new.bID).bID;
                 
-                if i=0 then
+                if empCount = 0 then
                     raise_application_error(-20000, 'An employee`s supervisor must work at the same branch they do.');
                 end if;
             end if;
@@ -349,13 +349,13 @@ create or replace trigger CheckEmployeeBranch
         of bID
         on EmployeeTable
         for each row
-        declare i int;
+        declare brCount int;
         begin
-            select count(*) into i
+            select count(*) into brCount
             from BranchTable br
-            where br.bID=deref(:new.bID).bID;
+            where br.bID = deref(:new.bID).bID;
             
-            if i=0 then
+            if brCount = 0 then
                 raise_application_error(-20000, 'The branch entered for this employee doesn`t exist.');
             end if;
         end;
@@ -365,23 +365,19 @@ create or replace trigger CheckBranchSupervisor
         of supervisorID
         on EmployeeTable
         for each row
-        declare i int;
+        declare empCount int;
         begin
             if :new.supervisorID is NULL then
-                select count(*) into i
+                select count(*) into empCount
                 from EmployeeTable emp
-                where emp.supervisorID is NULL and deref(emp.bID).bID=deref(:new.bID).bID;
+                where emp.supervisorID is NULL and deref(emp.bID).bID = deref(:new.bID).bID;
                 
-                if i=1 then
+                if empCount = 1 then
                     raise_application_error(-20000, 'The branch entered for this employee already has a head employee.');
                 end if;
             end if;
         end;
         /
-
-
-
-
 
 create or replace type Customer as object (
     custID int,
@@ -427,13 +423,13 @@ create or replace trigger CheckPersonIsAlreadyCustomer
         of pers
         on CustomerTable
         for each row
-        declare i int;
+        declare custCount int;
         begin
-            select count(*) into i
+            select count(*) into custCount
             from CustomerTable cust
-            where deref(cust.pers).persID=deref(:new.pers).persID;
+            where deref(cust.pers).persID = deref(:new.pers).persID;
             
-            if i>0 then
+            if custCount > 0 then
                 raise_application_error(-20000, 'This person is already a customer.');
             end if;
         end;
@@ -512,7 +508,7 @@ create or replace type body Customer as
     acntCount integer default 0;
     begin
         if self.accounts is not NULL then
-            for i in self.accounts.first .. self.accounts.last loop
+            for i in 1 .. self.accounts.count loop
                 select count(*) into acntCount
                 from AccountTable acnt
                 where acnt.accNum = deref(self.accounts(i)).accNum and acnt.accNum = accNum;
@@ -554,13 +550,13 @@ create or replace trigger CheckAccountBranch
         of bID
         on AccountTable
         for each row
-        declare i int;
+        declare brCount int;
         begin
-            select count(*) into i
+            select count(*) into brCount
             from BranchTable br
-            where br.bID=deref(:new.bID).bID;
+            where br.bID = deref(:new.bID).bID;
             
-            if i=0 then
+            if brCount = 0 then
                 raise_application_error(-20000, 'The branch entered for this account doesn`t exist.');
             end if;
         end;
@@ -572,12 +568,12 @@ create or replace trigger CheckCustomersAccountExists
         for each row
         declare acntCount int;
         begin
-            for i in :new.accounts.first .. :new.accounts.last loop
+            for i in 1 .. :new.accounts.count loop
                 select count(*) into acntCount
                 from AccountTable acnt
-                where acnt.accNum=deref(:new.accounts(i)).accNum;
+                where acnt.accNum = deref(:new.accounts(i)).accNum;
                 
-                if acntCount=0 then
+                if acntCount = 0 then
                     raise_application_error(-20000, 'This customer`s account at index ' || TO_CHAR(i) || ' doesn`t exist.');
                 end if;
             end loop;
@@ -594,9 +590,9 @@ create or replace trigger CheckAccountsCustomerExists
                 for i in 1 .. :new.customers.count loop
                     select count(*) into custCount
                     from CustomerTable cust
-                    where cust.custID=deref(:new.customers(i)).custID;
+                    where cust.custID = deref(:new.customers(i)).custID;
                     
-                    if custCount=0 then
+                    if custCount = 0 then
                         raise_application_error(-20000, 'This account`s customer at index ' || TO_CHAR(i) || ' doesn`t exist.');
                     end if;
                 end loop;
@@ -608,18 +604,16 @@ create or replace trigger CheckWorksAtAccountsBranch
         of accounts
         on CustomerTable
         for each row
-        declare i int;
+        declare empCount int;
         begin
             if :new.accounts is not NULL then /* an customer's accounts may be initially NULL, in case their account(s) needs to be created before we can create a reference to the account(s) */
-                for j in :new.accounts.first .. :new.accounts.last loop
-                    i:=0;
-                    
-                    select count(*) into i
+                for i in 1 .. :new.accounts.count loop
+                    select count(*) into empCount
                     from EmployeeTable emp
-                    where deref(emp.bID).bID=deref(deref(:new.accounts(j)).bID).bID and deref(emp.pers).persID=deref(:new.pers).persID;
+                    where deref(emp.bID).bID = deref(deref(:new.accounts(i)).bID).bID and deref(emp.pers).persID = deref(:new.pers).persID;
                 
-                    if i>0 then
-                        raise_application_error(-20000, 'Account at index ' || TO_CHAR(j) || ' of this customer`s accounts is assigned to the same branch which this customer is employed at.');
+                    if empCount > 0 then
+                        raise_application_error(-20000, 'Account at index ' || TO_CHAR(i) || ' of this customer`s accounts is assigned to the same branch which this customer is employed at.');
                     end if;
                 end loop;                
             end if;
@@ -630,20 +624,18 @@ create or replace trigger CheckIsEmployeeAtBranch
         of customers
         on AccountTable
         for each row
-        declare i int;
+        declare empCount int;
         begin
             if :new.customers is not NULL then /* an account's customers is initially NULL, in case it's customer needs to be created before we can create a reference to the customer */
-                for j in 1 .. :new.customers.count loop
-                    i:=0;
-                    
-                    select count(*) into i
+                for i in 1 .. :new.customers.count loop
+                    select count(*) into empCount
                     from EmployeeTable emp
-                    where deref(emp.pers).persID=deref(deref(:new.customers(j)).pers).persID and deref(emp.bID).bID=deref(:new.bID).bID;
+                    where deref(emp.pers).persID = deref(deref(:new.customers(i)).pers).persID and deref(emp.bID).bID = deref(:new.bID).bID;
                 
-                    if i>0 then
-                        raise_application_error(-20000, 'Person at index ' || TO_CHAR(j) || ' of this account`s customers is an employee at the branch which this account is assigned to.');
+                    if empCount > 0 then
+                        raise_application_error(-20000, 'Person at index ' || TO_CHAR(i) || ' of this account`s customers is an employee at the branch which this account is assigned to.');
                     end if;
-                end loop;                
+                end loop;       
             end if;
         end;
         /
