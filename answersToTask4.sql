@@ -92,4 +92,15 @@ where deref(deref(emp.supervisorID).pers).pName.title = 'Mr'
 /* query 'h' */
 select deref(emp.pers).getName() as name, emp.awardEvaluation() as medal
 from EmployeeTable emp
-where emp.awardEvaluation() is not NULL;
+where emp.awardEvaluation() is not NULL
+order by (
+    case emp.awardEvaluation()
+    
+    when 'gold' then 1
+    
+    when 'silver' then 2
+    
+    when 'bronze' then 3
+    
+    end
+);
