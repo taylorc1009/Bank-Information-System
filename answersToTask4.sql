@@ -44,12 +44,11 @@ order by acnt.balance desc;
 
 
 /* query 'd' */
-select br.getAddress() as branch_address, deref(acnt.bID).getAddress() as accounts_branch_address
-from BranchTable br
-join AccountTable acnt on (deref(acnt.bID).bID = br.bID)
-join EmployeeTable emp on (deref(emp.bID).bID = br.bID)
-where emp.supervisorID is not NULL and acnt.containsPerson(deref(emp.pers).persID) = 'yes'
-group by deref(acnt.bID).bID, br.getAddress(), deref(acnt.bID).getAddress();
+select deref(emp.bID).getAddress() as branch_address, deref(acnt.bID).getAddress() as accounts_branch_address
+from CustomerTable cust
+join AccountTable acnt on (acnt.containsPerson(deref(cust.pers).persID) = 'yes')
+join EmployeeTable emp on (deref(cust.pers).persID = deref(emp.pers).persID)
+where emp.supervisorID is not NULL and acnt.containsPerson(deref(emp.pers).persID) = 'yes';
 
 
 
