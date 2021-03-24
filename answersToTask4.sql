@@ -82,7 +82,7 @@ order by acnt.limitOfFreeOD desc;
 select pers.getName() as name, pers.getMobilePhones() as mobile_phone_numbers
 from CustomerTable cust
 join PersonTable pers on (pers.persID = deref(cust.pers).persID)
-where pers.countMobilePhones() > 1;
+where pers.countMobilePhones() > 1 and pers.findMobileStartsWith('0760') = 'yes';
 
 
 
