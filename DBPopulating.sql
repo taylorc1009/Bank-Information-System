@@ -1038,7 +1038,7 @@ insert into EmployeeTable values(
     'head',
     12000,
     (select ref(br) from BranchTable br where br.bID=1),
-    '1-MAY-99'
+    '01-MAY-1999'
 );
 
 insert into EmployeeTable values(
@@ -1048,7 +1048,7 @@ insert into EmployeeTable values(
     'team leader',
     9000,
     (select ref(br) from BranchTable br where br.bID=1),
-    '17-APR-02'
+    '17-APR-2002'
 );
 
 insert into EmployeeTable values(
@@ -1058,7 +1058,7 @@ insert into EmployeeTable values(
     'accountant',
     3000,
     (select ref(br) from BranchTable br where br.bID=1),
-    '23-AUG-06'
+    '23-AUG-2019'
 );
 
 insert into EmployeeTable values(
@@ -1068,7 +1068,7 @@ insert into EmployeeTable values(
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=1),
-    '4-NOV-15'
+    '04-NOV-2018'
 );
 
 insert into EmployeeTable values(
@@ -1078,7 +1078,7 @@ insert into EmployeeTable values(
     'manager',
     10000,
     (select ref(br) from BranchTable br where br.bID=2),
-    '14-JUN-14'
+    '14-JUN-2015'
 );
 
 insert into EmployeeTable values(
@@ -1088,7 +1088,7 @@ insert into EmployeeTable values(
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=2),
-    '10-DEC-14'
+    '10-DEC-2017'
 );
 
 insert into EmployeeTable values(
@@ -1098,7 +1098,7 @@ insert into EmployeeTable values(
     'accountant',
     10000,
     (select ref(br) from BranchTable br where br.bID=2),
-    '12-MAY-07'
+    '12-MAY-2019'
 );
 
 insert into EmployeeTable values(
@@ -1108,7 +1108,7 @@ insert into EmployeeTable values(
     'head',
     12000,
     (select ref(br) from BranchTable br where br.bID=3),
-    '18-MAY-09'
+    '18-MAY-2009'
 );
 
 insert into EmployeeTable values(
@@ -1118,7 +1118,7 @@ insert into EmployeeTable values(
     'cashier',
     2700,
     (select ref(br) from BranchTable br where br.bID=3),
-    '5-JAN-16'
+    '05-JAN-20'
 );
 
 insert into EmployeeTable values(
@@ -1128,7 +1128,7 @@ insert into EmployeeTable values(
     'cashier',
     2700,
     (select ref(br) from BranchTable br where br.bID=3),
-    '8-OCT-15'
+    '08-OCT-2017'
 );
 
 insert into EmployeeTable values(
@@ -1138,7 +1138,7 @@ insert into EmployeeTable values(
     'team leader',
     10000,
     (select ref(br) from BranchTable br where br.bID=4),
-    '29-JUN-10'
+    '29-JUN-2018'
 );
 
 insert into EmployeeTable values(
@@ -1148,7 +1148,7 @@ insert into EmployeeTable values(
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=4),
-    '7-DEC-10'
+    '05-DEC-2019'
 );
 
 insert into EmployeeTable values(
@@ -1158,7 +1158,7 @@ insert into EmployeeTable values(
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=4),
-    '18-JUL-14'
+    '18-JUL-2018'
 );
 
 insert into EmployeeTable values(
@@ -1168,7 +1168,7 @@ insert into EmployeeTable values(
     'manager',
     11000,
     (select ref(br) from BranchTable br where br.bID=5),
-    '7-MAR-15'
+    '07-MAR-2010'
 );
 
 insert into EmployeeTable values(
@@ -1178,7 +1178,7 @@ insert into EmployeeTable values(
     'accountant',
     3000,
     (select ref(br) from BranchTable br where br.bID=5),
-    '15-DEC-14'
+    '15-DEC-2020'
 );
 
 insert into EmployeeTable values(
@@ -1188,7 +1188,7 @@ insert into EmployeeTable values(
     'head',
     12000,
     (select ref(br) from BranchTable br where br.bID=6),
-    '19-SEP-00'
+    '19-SEP-2000'
 );
 
 insert into EmployeeTable values(
@@ -1198,7 +1198,7 @@ insert into EmployeeTable values(
     'manager',
     8500,
     (select ref(br) from BranchTable br where br.bID=6),
-    '3-OCT-07'
+    '06-OCT-07'
 );
 
 insert into EmployeeTable values(
@@ -1208,7 +1208,7 @@ insert into EmployeeTable values(
     'cashier',
     2700,
     (select ref(br) from BranchTable br where br.bID=6),
-    '25-FEB-11'
+    '25-FEB-2020'
 );
 
 insert into EmployeeTable values(
@@ -1218,7 +1218,7 @@ insert into EmployeeTable values(
     'head',
     12000,
     (select ref(br) from BranchTable br where br.bID=7),
-    '17-FEB-09'
+    '17-FEB-2009'
 );
 
 insert into EmployeeTable values(
@@ -1228,7 +1228,7 @@ insert into EmployeeTable values(
     'cashier',
     2700,
     (select ref(br) from BranchTable br where br.bID=7),
-    '20-JUN-13'
+    '20-JUN-2015'
 );
 
 insert into EmployeeTable values(
@@ -1238,7 +1238,7 @@ insert into EmployeeTable values(
     'head',
     11000,
     (select ref(br) from BranchTable br where br.bID=8),
-    '1-MAR-02'
+    '01-MAR-2006'
 );
 
 insert into EmployeeTable values(
@@ -1248,7 +1248,7 @@ insert into EmployeeTable values(
     'accountant',
     4000,
     (select ref(br) from BranchTable br where br.bID=8),
-    '30-OCT-09'
+    '30-OCT-2009'
 );
 
 insert into EmployeeTable values(
@@ -1258,7 +1258,7 @@ insert into EmployeeTable values(
     'accountant',
     4000,
     (select ref(br) from BranchTable br where br.bID=8),
-    '3-OCT-07'
+    '03-OCT-2017'
 );
 
 insert into EmployeeTable values(
@@ -1268,7 +1268,7 @@ insert into EmployeeTable values(
     'team leader',
     10000,
     (select ref(br) from BranchTable br where br.bID=9),
-    '20-OCT-10'
+    '20-OCT-2017'
 );
 
 insert into EmployeeTable values(
@@ -1278,7 +1278,7 @@ insert into EmployeeTable values(
     'accountant',
     3500,
     (select ref(br) from BranchTable br where br.bID=9),
-    '16-FEB-13'
+    '16-FEB-2016'
 );
 
 insert into EmployeeTable values(
@@ -1288,7 +1288,7 @@ insert into EmployeeTable values(
     'cashier',
     3500,
     (select ref(br) from BranchTable br where br.bID=9),
-    '20-JUN-13'
+    '20-JUN-2015'
 );
 
 insert into EmployeeTable values(
@@ -1298,7 +1298,7 @@ insert into EmployeeTable values(
     'head',
     12000,
     (select ref(br) from BranchTable br where br.bID=10),
-    '19-JUL-14'
+    '19-JUL-2004'
 );
 
 insert into EmployeeTable values(
@@ -1308,7 +1308,7 @@ insert into EmployeeTable values(
     'accountant',
     12000,
     (select ref(br) from BranchTable br where br.bID=10),
-    '12-JUN-15'
+    '12-JUN-2018'
 );
 
 insert into EmployeeTable values(
@@ -1318,7 +1318,7 @@ insert into EmployeeTable values(
     'head',
     12000,
     (select ref(br) from BranchTable br where br.bID=11),
-    '1-MAY-99'
+    '01-MAY-1999'
 );
 
 insert into EmployeeTable values(
@@ -1328,7 +1328,7 @@ insert into EmployeeTable values(
     'accountant',
     4000,
     (select ref(br) from BranchTable br where br.bID=11),
-    '17-APR-02'
+    '17-APR-2020'
 );
 
 insert into EmployeeTable values(
@@ -1338,7 +1338,7 @@ insert into EmployeeTable values(
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=11),
-    '4-NOV-15'
+    '04-NOV-2019'
 );
 
 insert into EmployeeTable values(
@@ -1348,7 +1348,7 @@ insert into EmployeeTable values(
     'manager',
     10000,
     (select ref(br) from BranchTable br where br.bID=12),
-    '14-JUN-14'
+    '14-JUN-2014'
 );
 
 insert into EmployeeTable values(
@@ -1358,7 +1358,7 @@ insert into EmployeeTable values(
     'cashier',
     3000,
     (select ref(br) from BranchTable br where br.bID=12),
-    '10-DEC-14'
+    '10-JAN-2021'
 );
 
 insert into EmployeeTable values(
@@ -1368,7 +1368,7 @@ insert into EmployeeTable values(
     'manager',
     10000,
     (select ref(br) from BranchTable br where br.bID=13),
-    '12-MAY-07'
+    '12-MAY-2007'
 );
 
 insert into EmployeeTable values(
@@ -1378,7 +1378,7 @@ insert into EmployeeTable values(
     'cashier',
     2700,
     (select ref(br) from BranchTable br where br.bID=13),
-    '5-JAN-16'
+    '05-JAN-2016'
 );
 
 insert into EmployeeTable values(
@@ -1388,7 +1388,7 @@ insert into EmployeeTable values(
     'manager',
     11500,
     (select ref(br) from BranchTable br where br.bID=14),
-    '8-OCT-15'
+    '08-OCT-2013'
 );
 
 insert into EmployeeTable values(
@@ -1396,9 +1396,9 @@ insert into EmployeeTable values(
     (select ref(pers) from PersonTable pers where pers.persID=39),
     (select ref(emp) from EmployeeTable emp where emp.empID=36),
     'accountant',
-    35000,
+    3200,
     (select ref(br) from BranchTable br where br.bID=14),
-    '29-JUN-10'
+    '29-FEB-2020'
 );
 
 insert into EmployeeTable values(
@@ -1408,7 +1408,7 @@ insert into EmployeeTable values(
     'head',
     12000,
     (select ref(br) from BranchTable br where br.bID=15),
-    '7-DEC-10'
+    '07-DEC-2010'
 );
 
 insert into EmployeeTable values(
@@ -1418,7 +1418,7 @@ insert into EmployeeTable values(
     'cashier',
     3800,
     (select ref(br) from BranchTable br where br.bID=15),
-    '18-JUL-14'
+    '18-JUL-2017'
 );
 
 insert into EmployeeTable values(
@@ -1428,7 +1428,7 @@ insert into EmployeeTable values(
     'manager',
     11000,
     (select ref(br) from BranchTable br where br.bID=16),
-    '7-MAR-15'
+    '07-MAR-2015'
 );
 
 insert into EmployeeTable values(
@@ -1438,7 +1438,7 @@ insert into EmployeeTable values(
     'accountant',
     3000,
     (select ref(br) from BranchTable br where br.bID=16),
-    '15-DEC-14'
+    '15-DEC-2018'
 );
 
 insert into EmployeeTable values(
@@ -1458,7 +1458,7 @@ insert into EmployeeTable values(
     'accountant',
     4100,
     (select ref(br) from BranchTable br where br.bID=17),
-    '3-OCT-07'
+    '03-OCT-2007'
 );
 
 insert into EmployeeTable values(
@@ -1468,7 +1468,7 @@ insert into EmployeeTable values(
     'team leader',
     10100,
     (select ref(br) from BranchTable br where br.bID=18),
-    '25-FEB-11'
+    '25-FEB-2011'
 );
 
 insert into EmployeeTable values(
@@ -1478,7 +1478,7 @@ insert into EmployeeTable values(
     'accountant',
     2700,
     (select ref(br) from BranchTable br where br.bID=18),
-    '17-FEB-09'
+    '17-FEB-2021'
 );
 
 insert into EmployeeTable values(
@@ -1488,7 +1488,7 @@ insert into EmployeeTable values(
     'team leader',
     11200,
     (select ref(br) from BranchTable br where br.bID=19),
-    '20-JUN-13'
+    '20-JUN-2008'
 );
 
 insert into EmployeeTable values(
@@ -1498,7 +1498,7 @@ insert into EmployeeTable values(
     'cashier',
     3100,
     (select ref(br) from BranchTable br where br.bID=19),
-    '1-MAR-02'
+    '01-MAR-2002'
 );
 
 insert into EmployeeTable values(
@@ -1508,7 +1508,7 @@ insert into EmployeeTable values(
     'manager',
     11400,
     (select ref(br) from BranchTable br where br.bID=20),
-    '30-OCT-09'
+    '30-OCT-2009'
 );
 
 insert into EmployeeTable values(
@@ -1518,7 +1518,7 @@ insert into EmployeeTable values(
     'accountant',
     4000,
     (select ref(br) from BranchTable br where br.bID=20),
-    '3-OCT-07'
+    '03-OCT-2012'
 );
 
 insert into EmployeeTable values(
@@ -1528,7 +1528,7 @@ insert into EmployeeTable values(
     'cashier',
     3100,
     (select ref(br) from BranchTable br where br.bID=19),
-    '20-OCT-10'
+    '20-OCT-2019'
 );
 
 insert into EmployeeTable values(
@@ -1538,7 +1538,7 @@ insert into EmployeeTable values(
     'accountant',
     3500,
     (select ref(br) from BranchTable br where br.bID=18),
-    '16-FEB-13'
+    '16-FEB-2015'
 );
 
 insert into EmployeeTable values(
@@ -1548,7 +1548,7 @@ insert into EmployeeTable values(
     'cashier',
     3500,
     (select ref(br) from BranchTable br where br.bID=17),
-    '20-JUN-13'
+    '20-JUN-2015'
 );
 
 insert into EmployeeTable values(
@@ -1558,7 +1558,7 @@ insert into EmployeeTable values(
     'accountant',
     2800,
     (select ref(br) from BranchTable br where br.bID=16),
-    '19-JUL-14'
+    '19-JUL-2020'
 );
 
 insert into EmployeeTable values(
@@ -1568,7 +1568,7 @@ insert into EmployeeTable values(
     'accountant',
     3000,
     (select ref(br) from BranchTable br where br.bID=15),
-    '12-JUN-15'
+    '12-JUN-2018'
 );
 
 insert into EmployeeTable values(
@@ -1578,7 +1578,7 @@ insert into EmployeeTable values(
     'cashier',
     3200,
     (select ref(br) from BranchTable br where br.bID=14),
-    '18-MAY-09'
+    '18-MAY-2019'
 );
 
 insert into EmployeeTable values(
@@ -1588,7 +1588,7 @@ insert into EmployeeTable values(
     'accountant',
     3200,
     (select ref(br) from BranchTable br where br.bID=17),
-    '9-MAY-12'
+    '09-MAY-2020'
 );
 
 insert into EmployeeTable values(
@@ -1598,7 +1598,7 @@ insert into EmployeeTable values(
     'accountant',
     3200,
     (select ref(br) from BranchTable br where br.bID=17),
-    '10-OCT-11'
+    '10-OCT-2021'
 );
 
 insert into EmployeeTable values(
@@ -1608,7 +1608,7 @@ insert into EmployeeTable values(
     'cashier',
     3200,
     (select ref(br) from BranchTable br where br.bID=17),
-    '9-MAY-12'
+    '09-JUN-2021'
 );
 
 insert into EmployeeTable values(
@@ -1618,7 +1618,7 @@ insert into EmployeeTable values(
     'cashier',
     4000,
     (select ref(br) from BranchTable br where br.bID=17),
-    '9-SEP-07'
+    '14-SEP-2017'
 );
 
 insert into EmployeeTable values(
@@ -1628,7 +1628,7 @@ insert into EmployeeTable values(
     'accountant',
     4000,
     (select ref(br) from BranchTable br where br.bID=17),
-    '9-JAN-08'
+    '23-JAN-2018'
 );
 
 insert into EmployeeTable values(
@@ -1638,7 +1638,7 @@ insert into EmployeeTable values(
     'cashier',
     3200,
     (select ref(br) from BranchTable br where br.bID=17),
-    '28-FEB-11'
+    '28-FEB-2021'
 );
 
 insert into EmployeeTable values(
@@ -1648,7 +1648,7 @@ insert into EmployeeTable values(
     'accountant',
     3200,
     (select ref(br) from BranchTable br where br.bID=17),
-    '15-JUL-14'
+    '15-JUL-2017'
 );
 
 insert into EmployeeTable values(
@@ -1658,7 +1658,7 @@ insert into EmployeeTable values(
     'accountant',
     3200,
     (select ref(br) from BranchTable br where br.bID=11),
-    '12-JUL-17'
+    '12-JUL-2017'
 );
 
 insert into EmployeeTable values(
@@ -1668,7 +1668,7 @@ insert into EmployeeTable values(
     'accountant',
     3200,
     (select ref(br) from BranchTable br where br.bID=11),
-    '7-AUG-16'
+    '07-AUG-2018'
 );
 
 insert into EmployeeTable values(
@@ -1678,7 +1678,7 @@ insert into EmployeeTable values(
     'cashier',
     4000,
     (select ref(br) from BranchTable br where br.bID=11),
-    '25-APR-14'
+    '25-APR-2018'
 );
 
 insert into EmployeeTable values(
@@ -1688,7 +1688,7 @@ insert into EmployeeTable values(
     'cashier',
     3200,
     (select ref(br) from BranchTable br where br.bID=11),
-    '28-OCT-17'
+    '28-OCT-2017'
 );
 
 insert into EmployeeTable values(
@@ -1698,7 +1698,7 @@ insert into EmployeeTable values(
     'cashier',
     3200,
     (select ref(br) from BranchTable br where br.bID=9),
-    '14-MAR-16'
+    '14-MAR-2019'
 );
 
 insert into EmployeeTable values(
@@ -1708,7 +1708,7 @@ insert into EmployeeTable values(
     'accountant',
     4000,
     (select ref(br) from BranchTable br where br.bID=9),
-    '28-OCT-17'
+    '28-OCT-2017'
 );
 
 insert into EmployeeTable values(
@@ -1718,7 +1718,7 @@ insert into EmployeeTable values(
     'accountant',
     3200,
     (select ref(br) from BranchTable br where br.bID=9),
-    '20-NOV-19'
+    '20-NOV-2019'
 );
 
 insert into EmployeeTable values(
@@ -1728,7 +1728,7 @@ insert into EmployeeTable values(
     'cashier',
     4000,
     (select ref(br) from BranchTable br where br.bID=9),
-    '8-NOV-16'
+    '08-NOV-2016'
 );
 
 insert into EmployeeTable values(
@@ -1748,7 +1748,7 @@ insert into EmployeeTable values(
     'accountant',
     3200,
     (select ref(br) from BranchTable br where br.bID=8),
-    '11-JUL-17'
+    '11-JUL-2017'
 );
 
 insert into EmployeeTable values(
@@ -1758,7 +1758,7 @@ insert into EmployeeTable values(
     'accountant',
     3200,
     (select ref(br) from BranchTable br where br.bID=8),
-    '14-JUN-15'
+    '14-JUN-2018'
 );
 
 insert into EmployeeTable values(
@@ -1768,7 +1768,7 @@ insert into EmployeeTable values(
     'cashier',
     3200,
     (select ref(br) from BranchTable br where br.bID=8),
-    '17-MAR-17'
+    '17-MAR-2020'
 );
 
 insert into EmployeeTable values(
@@ -1776,9 +1776,9 @@ insert into EmployeeTable values(
     (select ref(pers) from PersonTable pers where pers.persID=80),
     (select ref(emp) from EmployeeTable emp where emp.empID=1),
     'manager',
-    800,
+    11800,
     (select ref(br) from BranchTable br where br.bID=1),
-    '9-JAN-13'
+    '09-JAN-2020'
 );
 
 
@@ -1793,7 +1793,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=1),
     NULL,
     NULL,
-    '12-MAY-09',
+    '12-MAY-2009',
     CustomersArray()
 );
 
@@ -1804,7 +1804,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=2),
     NULL,
     NULL,
-    '8-APR-13',
+    '18-APR-2013',
     CustomersArray()
 );
 
@@ -1815,7 +1815,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=3),
     NULL,
     NULL,
-    '26-FEB-16',
+    '26-FEB-2016',
     CustomersArray()
 );
 
@@ -1826,7 +1826,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=4),
     NULL,
     NULL,
-    '3-JAN-10',
+    '03-JAN-2010',
     CustomersArray()
 );
 
@@ -1837,7 +1837,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=5),
     NULL,
     NULL,
-    '21-JUL-12',
+    '21-JUL-2012',
     CustomersArray()
 );
 
@@ -1848,7 +1848,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=6),
     NULL,
     NULL,
-    '9-MAR-10',
+    '29-MAR-2010',
     CustomersArray()
 );
 
@@ -1859,7 +1859,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=7),
     NULL,
     NULL,
-    '8-JUL-07',
+    '18-JUL-2007',
     CustomersArray()
 );
 
@@ -1870,7 +1870,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=8),
     NULL,
     NULL,
-    '16-AUG-10',
+    '16-AUG-2010',
     CustomersArray()
 );
 
@@ -1881,7 +1881,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=9),
     NULL,
     NULL,
-    '10-SEP-14',
+    '10-SEP-2014',
     CustomersArray()
 );
 
@@ -1892,7 +1892,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=10),
     NULL,
     NULL,
-    '1-OCT-13',
+    '01-OCT-2013',
     CustomersArray()
 );
 
@@ -1903,7 +1903,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=11),
     NULL,
     NULL,
-    '19-DEC-06',
+    '19-DEC-2006',
     CustomersArray()
 );
 
@@ -1914,7 +1914,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=12),
     NULL,
     NULL,
-    '2-OCT-07',
+    '02-OCT-2007',
     CustomersArray()
 );
 
@@ -1925,7 +1925,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=13),
     NULL,
     NULL,
-    '14-AUG-09',
+    '14-AUG-2009',
     CustomersArray()
 );
 
@@ -1936,7 +1936,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=14),
     NULL,
     NULL,
-    '7-MAR-10',
+    '07-MAR-2010',
     CustomersArray()
 );
 
@@ -1947,7 +1947,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=15),
     NULL,
     NULL,
-    '27-NOV-08',
+    '27-NOV-2008',
     CustomersArray()
 );
 
@@ -1958,7 +1958,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=16),
     NULL,
     NULL,
-    '25-NOV-13',
+    '25-NOV-2013',
     CustomersArray()
 );
 
@@ -1969,7 +1969,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=17),
     NULL,
     NULL,
-    '8-JUL-14',
+    '08-JUL-2014',
     CustomersArray()
 );
 
@@ -1980,7 +1980,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=18),
     NULL,
     NULL,
-    '9-JAN-07',
+    '09-JAN-2007',
     CustomersArray()
 );
 
@@ -1991,7 +1991,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=19),
     NULL,
     NULL,
-    '22-MAY-12',
+    '22-MAY-2012',
     CustomersArray()
 );
 
@@ -2002,7 +2002,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=20),
     NULL,
     NULL,
-    '13-JUN-12',
+    '13-JUN-2012',
     CustomersArray()
 );
 
@@ -2013,7 +2013,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=19),
     NULL,
     NULL,
-    '13-JUN-12',
+    '13-JUN-2012',
     CustomersArray()
 );
 
@@ -2024,7 +2024,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=3),
     NULL,
     NULL,
-    '21-JUL-12',
+    '21-JUL-2012',
     CustomersArray()
 );
 
@@ -2035,7 +2035,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=11),
     NULL,
     NULL,
-    '9-AUG-15',
+    '09-AUG-2015',
     CustomersArray()
 );
 
@@ -2046,7 +2046,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=18),
     NULL,
     NULL,
-    '4-JUL-16',
+    '04-JUL-2016',
     CustomersArray()
 );
 
@@ -2057,7 +2057,7 @@ insert into AccountTable values(
     (select ref(br) from BranchTable br where br.bID=20),
     NULL,
     NULL,
-    '4-APR-14',
+    '04-APR-2014',
     CustomersArray()
 );
 
