@@ -128,7 +128,9 @@ create or replace type Person as object (
     mobilePhones MobilePhonesArray,
     niNum varchar2(5),
     member function getName return varchar2,
-    member function getAddress return varchar2
+    member function getAddress return varchar2,
+    member function getMobilePhones return varchar2,
+    member function countMobilePhones return int
 ) final
 /
 create or replace type body Person as
@@ -152,6 +154,37 @@ create or replace type body Person as
         end if;
         return personAddress;
     end getAddress;
+    
+    member function getMobilePhones return varchar2 is mobileNumbers varchar2(126) default NULL;
+    mobileNumber varchar2(11) default NULL;
+    begin
+        if self.mobilePhones is not NULL then
+            for i in 1 .. self.mobilePhones.count loop
+                mobileNumber := self.mobilePhones(i);
+                
+                if mobileNumber is not NULL then
+                    if mobileNumbers is NULL then
+                        mobileNumbers := mobileNumber;
+                    else
+                        mobileNumbers := concat(mobileNumbers, ', ' || mobileNumber);
+                    end if;
+                end if;
+            end loop;
+        end if;
+        return mobileNumbers;
+    end getMobilePhones;
+    
+    member function countMobilePhones return int is c int default 0;
+    begin
+        if self.mobilePhones is not NULL then
+            for i in 1 .. self.mobilePhones.count loop
+                if self.mobilePhones(i) is not NULL then
+                    c := c + 1;
+                end if;
+            end loop;
+        end if;
+        return c;
+    end countMobilePhones;
 end;
 /
 create table PersonTable of Person (
@@ -414,8 +447,8 @@ create table AccountTable of CustomerAccount (
 );
 /
 create or replace type body CustomerAccount as
-    member function getCustomerNames return varchar2 is customerNames varchar2(456) default NULL;
-    customerName varchar2(44) default NULL;
+    member function getCustomerNames return varchar2 is customerNames varchar2(476) default NULL;
+    customerName varchar2(46) default NULL;
     begin
         if self.customers is not NULL then
             for i in 1 .. self.customers.count loop
@@ -443,7 +476,6 @@ create or replace type body CustomerAccount as
     begin
         if self.customers is not NULL then
             for i in 1 .. self.customers.count loop
-                -- it would be quicker to simply check this in the if statement, but 'deref' cannot be used outside of a query
                 select count(*) into persCount
                 from PersonTable pers
                 where pers.persID = deref(deref(self.customers(i)).pers).persID and pers.persID = persID;
@@ -472,14 +504,15 @@ end;
 alter type Customer
 add member function containsAccount(accNum int) return varchar2 cascade;
 /
+alter type Customer
+add member function countAccounts(accNum int) return int cascade;
+/
 create or replace type body Customer as
     member function containsAccount(accNum int) return varchar2 is response varchar2(3);
     acntCount integer default 0;
     begin
         if self.accounts is not NULL then
             for i in self.accounts.first .. self.accounts.last loop
-                acntCount := 0;
-                -- it would be quicker to simply check this in the if statement, but 'deref' cannot be used outside of a query
                 select count(*) into acntCount
                 from AccountTable acnt
                 where acnt.accNum = deref(self.accounts(i)).accNum and acnt.accNum = accNum;
