@@ -174,7 +174,9 @@ insert into PersonTable values(
     PersonName('Mr', 'Arron', 'McLean'),
     '01293736462',
     MobilePhonesArray(
-        '07984746383'
+        '07984746383',
+        '07603833834',
+        '07938284728'
     ),
     '8N5AH'
 );
@@ -289,7 +291,7 @@ insert into PersonTable values(
     '01947937393',
     MobilePhonesArray(
         '07472424832',
-        '07938478277'
+        '07608478277'
     ),
     '33AJN'
 );
@@ -534,9 +536,7 @@ insert into PersonTable values(
     PersonName('Mstr', 'Samantha', 'Jackson'),
     '01362673827',
     MobilePhonesArray(
-        '07362288287',
-        '07283833834',
-        '07938284728'
+        '07362288287'
     ),
     'JSNDD'
 );
