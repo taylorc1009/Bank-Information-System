@@ -102,7 +102,7 @@ create or replace trigger CheckBranchPhone
         on BranchTable
         for each row
         begin
-            if not regexp_like(:new.bPhone, '^[[:digit:]]{8,11}') then
+            if not regexp_like(:new.bPhone, '[[:digit:]]{8,11}') then
                 raise_application_error(-20000, 'A branch`s phone number must be 8-11 numbers long and consist of only numbers.');
             end if;
         end;
@@ -222,7 +222,7 @@ create or replace trigger CheckPersonHomePhone
         on PersonTable
         for each row
         begin
-            if not regexp_like(:new.homePhone, '^[[:digit:]]{8,11}') then
+            if not regexp_like(:new.homePhone, '[[:digit:]]{8,11}') then
                 raise_application_error(-20000, 'A person`s home phone number must be 8-11 numbers long and consist of only numbers.');
             end if;
         end;
@@ -235,7 +235,7 @@ create or replace trigger CheckPersonMobilePhones
         begin
             if :new.mobilePhones is not NULL then
                 for i in 1 .. :new.mobilePhones.count loop
-                    if not regexp_like(:new.mobilePhones(i), '^[[:digit:]]{8,11}') then
+                    if not regexp_like(:new.mobilePhones(i), '[[:digit:]]{8,11}') then
                         raise_application_error(-20000, 'This person`s mobile phone number at index ' || i || ' wasn`t 8-11 numbers long or didn`t consist of only numbers.');
                     end if;
                 end loop;
