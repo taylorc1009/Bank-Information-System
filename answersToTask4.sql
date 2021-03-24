@@ -95,12 +95,8 @@ from EmployeeTable emp
 where emp.awardEvaluation() is not NULL
 order by (
     case emp.awardEvaluation()
-    
     when 'gold' then 1
-    
     when 'silver' then 2
-    
     when 'bronze' then 3
-    
     end
-);
+) asc;
