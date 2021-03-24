@@ -20,7 +20,7 @@ group by br.bID, br.getAddress();
 
 
 
-/* query 'c' - none of these solutions work: the first 2 don't limit to 1 account per branch and the third doesn't execute due no being able to get multiple columns from a subquery in a where clause */
+/* query 'c' - neither of these solutions work 100%: they don't limit to 1 account per branch, and I don't know why but both functions 'max' and 'first_value' do get the highest for each branch but they don't prevent the rows that aren't the first values from being listed */
 select br.getAddress() as address, acnt.getCustomerNames() as customers, max(acnt.balance) as balance
 from BranchTable br
 join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
@@ -35,17 +35,6 @@ where acnt.accType = 'savings' and acnt.accNum in (
     select first_value(sAcnt.accNum) ignore nulls over (partition by sAcnt.accNum order by acnt.balance rows between unbounded preceding and unbounded following)
     from AccountTable sAcnt
     group by sAcnt.accNum, deref(sAcnt.bID).bID
-)
-group by br.bID, br.getAddress(), acnt.getCustomerNames(), acnt.balance
-order by acnt.balance desc;
-
-select br.getAddress() as address, acnt.getCustomerNames() as customers, acnt.balance as balance
-from BranchTable br
-join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
-where acnt.accType = 'savings' and acnt.accNum in (
-    select sAcnt.accNum, max(sAcnt.balance)
-    from AccountTable sAcnt
-    group by sAcnt.accNum, deref(sAcnt.bID).bID, sAcnt.balance
 )
 group by br.bID, br.getAddress(), acnt.getCustomerNames(), acnt.balance
 order by acnt.balance desc;
@@ -95,5 +84,9 @@ where deref(deref(emp.supervisorID).pers).pName.title = 'Mr'
     and deref(deref(emp.supervisorID).pers).pName.surName = 'Smith'
     and deref(deref(deref(emp.supervisorID).supervisorID).pers).pName.title = 'Mrs'
     and deref(deref(deref(emp.supervisorID).supervisorID).pers).pName.surname = 'Jones';
+
+
+
+
 
 /* query 'h' */
