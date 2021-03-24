@@ -386,12 +386,6 @@ add member function getCustomerNames return varchar2 cascade;
 alter type CustomerAccount
 add member function containsPerson(persID int) return varchar2 cascade;
 /
-alter type CustomerAccount
-add member function countCustomers return integer cascade;
-/
-alter type CustomerAccount
-add member procedure addCustomer(cust ref Customer) cascade;
-/
 create or replace trigger CheckPersonIsAlreadyCustomer
     before insert or update
         of pers
