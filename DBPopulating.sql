@@ -1580,6 +1580,76 @@ insert into EmployeeTable values(
     '18-MAY-09'
 );
 
+insert into EmployeeTable values(
+    56,
+    (select ref(pers) from PersonTable pers where pers.persID=61),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'accountant',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '9-MAY-12'
+);
+
+insert into EmployeeTable values(
+    57,
+    (select ref(pers) from PersonTable pers where pers.persID=62),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'accountant',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '10-OCT-11'
+);
+
+insert into EmployeeTable values(
+    58,
+    (select ref(pers) from PersonTable pers where pers.persID=63),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'cashier',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '9-MAY-12'
+);
+
+insert into EmployeeTable values(
+    59,
+    (select ref(pers) from PersonTable pers where pers.persID=64),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'cashier',
+    4000,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '9-SEP-07'
+);
+
+insert into EmployeeTable values(
+    60,
+    (select ref(pers) from PersonTable pers where pers.persID=65),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'accountant',
+    4000,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '9-JAN-08'
+);
+
+insert into EmployeeTable values(
+    61,
+    (select ref(pers) from PersonTable pers where pers.persID=66),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'cashier',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '28-FEB-11'
+);
+
+insert into EmployeeTable values(
+    62,
+    (select ref(pers) from PersonTable pers where pers.persID=67),
+    (select ref(emp) from EmployeeTable emp where emp.empID=42),
+    'accountant',
+    3200,
+    (select ref(br) from BranchTable br where br.bID=17),
+    '15-JUL-14'
+);
+
 
 
 
