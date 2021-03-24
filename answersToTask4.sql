@@ -67,17 +67,14 @@ group by deref(acnt.bID).bID, br.getAddress(), deref(acnt.bID).getAddress();
 
 
 /* query 'e' */
-select br.bID as address, acnt.getCustomerNames() as customers, max(acnt.limitOfFreeOD) as balance
+select br.bID as branch_id, acnt.getCustomerNames() as customers, max(acnt.limitOfFreeOD) as free_overdraft
 from BranchTable br
 join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
 where acnt.accType = 'current' and acnt.countCustomers() > 1
 group by br.bID, acnt.getCustomerNames(), acnt.limitOfFreeOD
 order by acnt.limitOfFreeOD desc;
 
-select acnt.getCustomerNames()
-from BranchTable br
-join AccountTable acnt on (br.bID = deref(acnt.bID).bID)
-group by acnt.getCustomerNames();
+
 
 
 
