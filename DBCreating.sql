@@ -130,7 +130,8 @@ create or replace type Person as object (
     member function getName return varchar2,
     member function getAddress return varchar2,
     member function getMobilePhones return varchar2,
-    member function countMobilePhones return int
+    member function countMobilePhones return int,
+    member function findMobileStartsWith(numbers varchar2) return varchar2
 ) final
 /
 create or replace type body Person as
@@ -185,6 +186,20 @@ create or replace type body Person as
         end if;
         return c;
     end countMobilePhones;
+    
+    member function findMobileStartsWith(numbers varchar2) return varchar2 is response varchar2(3);
+    begin
+        if self.mobilePhones is not NULL then
+            for i in 1 .. self.mobilePhones.count loop
+                if self.mobilePhones(i) is not NULL then
+                    if substr(self.mobilePhones(i), 1, length(numbers)) = numbers then
+                        return 'yes';
+                    end if;
+                end if;
+            end loop;
+        end if;
+        return 'no';
+    end findMobileStartsWith;
 end;
 /
 create table PersonTable of Person (
