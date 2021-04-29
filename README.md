@@ -1,3 +1,5 @@
+Edinburgh Napier University, Advanced Database Systems module coursework. Developed using OracleSQL (PL/SQL).
+
 # Specification
 
 ## Scenario
